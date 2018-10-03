@@ -1,5 +1,6 @@
 package com.aprendiz.ragp.horariosctpi.controllers;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -79,6 +80,8 @@ public class IniciarSesion extends AppCompatActivity {
                         bandera = true;
                         if (usuarioList.get(i).getClave().equals(clave)){
                             i=usuarioList.size();
+                            Intent intent = new Intent(IniciarSesion.this,ControlarHorario.class);
+                            startActivity(intent);
 
 
                         }else{
