@@ -36,34 +36,31 @@
         app:layout_constraintTop_toBottomOf="@+id/imvLogo"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/btnMañana"
+    <ImageView
+        android:id="@+id/btnManana"
         android:layout_width="179dp"
         android:layout_height="152dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="252dp"
-        android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <ImageView
         android:id="@+id/btnTarde"
         android:layout_width="169dp"
         android:layout_height="156dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="168dp"
-        android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMañana" />
+        app:layout_constraintTop_toBottomOf="@+id/btnManana" />
 
-    <Button
+    <ImageView
         android:id="@+id/btnNoche"
         android:layout_width="165dp"
         android:layout_height="146dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="252dp"
         android:layout_marginBottom="8dp"
-        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnTarde"
@@ -106,7 +103,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.716"
-        app:layout_constraintStart_toEndOf="@+id/btnMañana"
+        app:layout_constraintStart_toEndOf="@+id/btnManana"
         tools:layout_editor_absoluteY="172dp" />
 
     <TextView
