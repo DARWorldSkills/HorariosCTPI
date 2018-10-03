@@ -1,4 +1,4 @@
-package com.aprendiz.ragp.horariosctpi;
+package com.aprendiz.ragp.horariosctpi.models;
 
 public class Instructor {
     private String correo;
