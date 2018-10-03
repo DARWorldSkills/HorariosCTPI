@@ -5,6 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aprendiz.ragp.horariosctpi.models.Ambiente;
@@ -12,6 +16,7 @@ import com.aprendiz.ragp.horariosctpi.models.Ficha;
 import com.aprendiz.ragp.horariosctpi.models.Horario;
 import com.aprendiz.ragp.horariosctpi.models.Iconos;
 import com.aprendiz.ragp.horariosctpi.models.Programa;
+import com.bumptech.glide.Glide;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +29,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MenuPrincipal extends AppCompatActivity {
+
+    ImageView btnManana, btnTarde, btnNoche;
+    TextView txtAmbiente, txtNumeroAmbiente;
+
+
     List<Ambiente> ambienteList = new ArrayList<>();
     List<Horario> horarioList = new ArrayList<>();
     List<Ficha> fichaList = new ArrayList<>();
@@ -39,20 +49,33 @@ public class MenuPrincipal extends AppCompatActivity {
     String [] iconosNoche =new String[3];
     String apodoAmbiente;
     Ambiente ambienteObj = new Ambiente();
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+        inizialite();
         apodoAmbiente = "TBT";
         obtenerHorario();
         obtenerAmbiente();
 
     }
+
+    private void inizialite() {
+        txtAmbiente = findViewById(R.id.txtAmbiente);
+        txtNumeroAmbiente = findViewById(R.id.txtNumeroAmbiente);
+        btnManana = findViewById(R.id.btnManana);
+        btnTarde = findViewById(R.id.btnTarde);
+        btnNoche = findViewById(R.id.btnNoche);
+    }
+
     private void obtenerAmbiente(){
         FirebaseApp.initializeApp(this);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference ambiente = reference.child("Ambiente");
+        DatabaseReference ambiente = reference.child("Ambientes");
         ambiente.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -61,6 +84,22 @@ public class MenuPrincipal extends AppCompatActivity {
                 for (int i=0; i<ambienteList.size();i++){
                     if (ambienteList.get(i).getApodo().equals(apodoAmbiente)){
                         ambienteObj = ambienteList.get(i);
+                        String tmp = ambienteObj.getNombre();
+                        try {
+                            if (Integer.parseInt(tmp.substring(tmp.length()-1,tmp.length()))==1){
+                                txtAmbiente.setText(tmp.substring(0,tmp.length()-1));
+                                txtNumeroAmbiente.setText(Integer.toString(1));
+                            }
+
+                            if (Integer.parseInt(tmp.substring(tmp.length()-1,tmp.length()))==2){
+                                txtAmbiente.setText(tmp.substring(0,tmp.length()-1));
+                                txtNumeroAmbiente.setText(Integer.toString(2));
+                            }
+
+                        }catch (Exception e){
+                            txtAmbiente.setText(tmp);
+                        }
+
                     }
                 }
 
@@ -86,6 +125,7 @@ public class MenuPrincipal extends AppCompatActivity {
                 ficha1 = horarioList.get(0).getFicha();
                 ficha2 = horarioList.get(2).getFicha();
                 ficha3 = horarioList.get(4).getFicha();
+
                 obtenerFicha();
 
 
@@ -117,6 +157,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
                     if (fichaList.get(i).getNumero().equals(ficha3)) {
                         programa[2] = fichaList.get(i).getPrograma();
+
                     }
                 }
                 obtenerPrograma();
@@ -152,6 +193,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
                     if (programaList.get(i).getNombre().equals(programa[2])) {
                         iconos[2] = programaList.get(i).getIcono();
+
                     }
 
                 }
@@ -176,25 +218,23 @@ public class MenuPrincipal extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 GenericTypeIndicator<ArrayList<Iconos>> t = new GenericTypeIndicator<ArrayList<Iconos>>(){};
                 iconosList = dataSnapshot.getValue(t);
-                Log.e("Hola",iconosList.get(0).getManana());
+
                 for (int i=0; i<iconosList.size();i++){
                     if (iconosList.get(i).getNombre().equals(iconos[0])) {
-                        iconosManana[0] = programaList.get(i).getIcono();
-                        iconosTarde[0] = programaList.get(i).getIcono();
-                        iconosNoche[0] = programaList.get(i).getIcono();
+                        iconosManana[0] = iconosList.get(i).getManana();
+                        Glide.with(MenuPrincipal.this).load(iconosManana[0]).crossFade().into(btnManana);
+
 
                     }
 
                     if (iconosList.get(i).getNombre().equals(iconos[1])) {
-                        iconosManana[1] = programaList.get(i).getIcono();
-                        iconosTarde[1] = programaList.get(i).getIcono();
-                        iconosNoche[1] = programaList.get(i).getIcono();
+                        iconosTarde[1] = iconosList.get(i).getTarde();
+                        Glide.with(MenuPrincipal.this).load(iconosTarde[1]).crossFade().into(btnTarde);
                     }
 
                     if (iconosList.get(i).getNombre().equals(iconos[2])) {
-                        iconosManana[2] = programaList.get(i).getIcono();
-                        iconosTarde[2] = programaList.get(i).getIcono();
-                        iconosNoche[2] = programaList.get(i).getIcono();
+                        iconosNoche[2] = iconosList.get(i).getNoche();
+                        Glide.with(MenuPrincipal.this).load(iconosNoche[2]).crossFade().into(btnNoche);
                     }
 
                 }
