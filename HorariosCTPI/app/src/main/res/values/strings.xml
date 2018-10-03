@@ -3,5 +3,13 @@
     <string name="creativas">Industrias Creativas</string>
     <string name="adsi">ADSI</string>
 
+    <string name="jornadamanan">Jornada Mañana</string>
+    <string name="jornatarde">Jornada Tarde</string>
+    <string name="jornanoche">Jornada Noche</string>
+    <string name="horamanana">Horario 7-13</string>
+    <string name="horatarde">Horario 13-19</string>
+    <string name="horanoche">Horario 19-22</string>
+    <string name="programa">Programa</string>
+
 
 </resources>

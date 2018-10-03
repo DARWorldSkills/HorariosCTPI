@@ -3,6 +3,8 @@ package com.aprendiz.ragp.horariosctpi.controllers;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.aprendiz.ragp.horariosctpi.R;
+
 public class HorarioNoche extends AppCompatActivity {
 
     @Override

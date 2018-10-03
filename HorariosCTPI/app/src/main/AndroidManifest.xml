@@ -21,6 +21,10 @@
         <activity android:name=".controllers.HorarioManana" />
         <activity android:name=".controllers.HorarioTarde" />
         <activity android:name=".controllers.HorarioNoche"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
