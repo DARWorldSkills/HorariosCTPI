@@ -319,4 +319,42 @@
         app:layout_constraintTop_toBottomOf="@+id/txtHorarioMañana"
         app:srcCompat="@drawable/tarde" />
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="140dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="344dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/btnlogin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAmbiente"
+        app:layout_constraintVertical_bias="0.882" />
+
+    <TextView
+        android:id="@+id/txtReloj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="296dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toStartOf="@+id/btnManana"
+        app:layout_constraintHorizontal_bias="0.009"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtHora" />
+
+    <TextView
+        android:id="@+id/txtHora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="210dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="70sp"
+        app:layout_constraintEnd_toStartOf="@+id/btnManana"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

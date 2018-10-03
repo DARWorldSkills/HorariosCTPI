@@ -25,13 +25,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class MenuPrincipal extends AppCompatActivity {
 
     ImageView btnManana, btnTarde, btnNoche;
-    TextView txtAmbiente, txtNumeroAmbiente;
+    TextView txtAmbiente, txtNumeroAmbiente,txtReloj, txtHora;
+    Thread reloj;
 
 
     List<Ambiente> ambienteList = new ArrayList<>();
@@ -61,7 +65,36 @@ public class MenuPrincipal extends AppCompatActivity {
         apodoAmbiente = "TBT";
         obtenerHorario();
         obtenerAmbiente();
+        obtenerHora();
 
+    }
+
+    private void obtenerHora() {
+
+        reloj = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true){
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Date date = new Date();
+
+                            SimpleDateFormat dateForma = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss a", Locale.getDefault());
+                            txtReloj.setText(dateForma.format(date));
+                            txtHora.setText(dateFormat.format(date));
+                        }
+                    });
+                }
+            }
+        });
+        reloj.start();
     }
 
     private void inizialite() {
@@ -70,6 +103,8 @@ public class MenuPrincipal extends AppCompatActivity {
         btnManana = findViewById(R.id.btnManana);
         btnTarde = findViewById(R.id.btnTarde);
         btnNoche = findViewById(R.id.btnNoche);
+        txtReloj = findViewById(R.id.txtReloj);
+        txtHora = findViewById(R.id.txtHora);
     }
 
     private void obtenerAmbiente(){
