@@ -2,6 +2,9 @@
     <string name="app_name">HorariosCTPI</string>
     <string name="creativas">Industrias Creativas</string>
     <string name="adsi">ADSI</string>
+    <string name="ingresenombredeusuario">Ingrese nombre de usuario</string>
+    <string name="ingreseclave">Ingrese clave</string>
+    <string name="iniciarSesion">Iniciar Sesión</string>
 
     <string name="jornadamanan">Jornada Mañana</string>
     <string name="jornatarde">Jornada Tarde</string>
