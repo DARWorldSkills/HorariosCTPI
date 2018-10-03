@@ -1,9 +1,12 @@
 package com.aprendiz.ragp.horariosctpi;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -11,6 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aprendiz.ragp.horariosctpi.controllers.HorarioManana;
+import com.aprendiz.ragp.horariosctpi.controllers.HorarioNoche;
+import com.aprendiz.ragp.horariosctpi.controllers.HorarioTarde;
+import com.aprendiz.ragp.horariosctpi.controllers.IniciarSesion;
 import com.aprendiz.ragp.horariosctpi.models.Ambiente;
 import com.aprendiz.ragp.horariosctpi.models.Ficha;
 import com.aprendiz.ragp.horariosctpi.models.Horario;
@@ -31,18 +38,18 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class MenuPrincipal extends AppCompatActivity {
+public class MenuPrincipal extends AppCompatActivity implements OnClickListener {
 
     ImageView btnManana, btnTarde, btnNoche;
     TextView txtAmbiente, txtNumeroAmbiente,txtReloj, txtHora;
     Thread reloj;
+    Button btnLogin;
 
-
-    List<Ambiente> ambienteList = new ArrayList<>();
-    List<Horario> horarioList = new ArrayList<>();
-    List<Ficha> fichaList = new ArrayList<>();
-    List<Programa> programaList = new ArrayList<>();
-    List<Iconos> iconosList = new ArrayList<>();
+    public static List<Ambiente> ambienteList = new ArrayList<>();
+    public static List<Horario> horarioList = new ArrayList<>();
+    public static List<Ficha> fichaList = new ArrayList<>();
+    public static List<Programa> programaList = new ArrayList<>();
+    public static List<Iconos> iconosList = new ArrayList<>();
     String ficha1 ="";
     String ficha2 ="";
     String ficha3 ="";
@@ -103,8 +110,13 @@ public class MenuPrincipal extends AppCompatActivity {
         btnManana = findViewById(R.id.btnManana);
         btnTarde = findViewById(R.id.btnTarde);
         btnNoche = findViewById(R.id.btnNoche);
+        btnLogin = findViewById(R.id.btnLogin);
         txtReloj = findViewById(R.id.txtReloj);
         txtHora = findViewById(R.id.txtHora);
+        btnManana.setOnClickListener(this);
+        btnTarde.setOnClickListener(this);
+        btnNoche.setOnClickListener(this);
+        btnLogin.setOnClickListener(this);
     }
 
     private void obtenerAmbiente(){
@@ -281,5 +293,32 @@ public class MenuPrincipal extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent();
+        switch (v.getId()){
+            case R.id.btnLogin:
+                intent = new Intent(MenuPrincipal.this,IniciarSesion.class);
+                startActivity(intent);
+                break;
+
+            case R.id.btnManana:
+                intent = new Intent(MenuPrincipal.this,HorarioManana.class);
+                startActivity(intent);
+                break;
+
+            case R.id.btnTarde:
+                intent = new Intent(MenuPrincipal.this,HorarioTarde.class);
+                startActivity(intent);
+                break;
+
+            case R.id.btnNoche:
+                intent = new Intent(MenuPrincipal.this,HorarioNoche.class);
+                startActivity(intent);
+                break;
+
+        }
     }
 }
