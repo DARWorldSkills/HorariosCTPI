@@ -4,19 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondomanana"
-    tools:context=".controllers.HorarioManana">
+    tools:context=".controllers.ControlarHorario">
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="1018dp"
-        android:layout_height="370dp"
-        android:layout_marginStart="8dp"
+    <com.jaredrummler.materialspinner.MaterialSpinner
+        android:id="@+id/spinnerHorarios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:ms_background_color="@color/common_google_signin_btn_text_dark_disabled"
+        app:ms_text_color="@color/common_google_signin_btn_text_dark_default"
+        app:ms_arrow_tint="@color/colorPrimaryDark"/>
+
 </android.support.constraint.ConstraintLayout>

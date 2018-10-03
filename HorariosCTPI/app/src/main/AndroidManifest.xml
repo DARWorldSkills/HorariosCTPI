@@ -20,7 +20,9 @@
         </activity>
         <activity android:name=".controllers.HorarioManana" />
         <activity android:name=".controllers.HorarioTarde" />
-        <activity android:name=".controllers.HorarioNoche"></activity>
+        <activity android:name=".controllers.HorarioNoche" />
+        <activity android:name=".controllers.IniciarSesion" />
+        <activity android:name=".controllers.ControlarHorario"></activity>
     </application>
 
 </manifest>
