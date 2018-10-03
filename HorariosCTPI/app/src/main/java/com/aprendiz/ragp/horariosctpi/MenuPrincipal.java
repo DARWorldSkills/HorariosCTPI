@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Window;
 import android.widget.Toast;
 
+import com.aprendiz.ragp.horariosctpi.models.Ambiente;
 import com.aprendiz.ragp.horariosctpi.models.Ficha;
 import com.aprendiz.ragp.horariosctpi.models.Horario;
 import com.aprendiz.ragp.horariosctpi.models.Iconos;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MenuPrincipal extends AppCompatActivity {
+    List<Ambiente> ambienteList = new ArrayList<>();
     List<Horario> horarioList = new ArrayList<>();
     List<Ficha> fichaList = new ArrayList<>();
     List<Programa> programaList = new ArrayList<>();
@@ -35,13 +37,41 @@ public class MenuPrincipal extends AppCompatActivity {
     String [] iconosManana =new String[3];
     String [] iconosTarde =new String[3];
     String [] iconosNoche =new String[3];
+    String apodoAmbiente;
+    Ambiente ambienteObj = new Ambiente();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+        apodoAmbiente = "TBT";
         obtenerHorario();
+        obtenerAmbiente();
 
+    }
+    private void obtenerAmbiente(){
+        FirebaseApp.initializeApp(this);
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference ambiente = reference.child("Ambiente");
+        ambiente.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                GenericTypeIndicator<ArrayList<Ambiente>> t = new GenericTypeIndicator<ArrayList<Ambiente>>(){};
+                ambienteList = dataSnapshot.getValue(t);
+                for (int i=0; i<ambienteList.size();i++){
+                    if (ambienteList.get(i).getApodo().equals(apodoAmbiente)){
+                        ambienteObj = ambienteList.get(i);
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void obtenerHorario() {
