@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">HorariosCTPI</string>
-    <string name="creativas1">Industrias Creativas</string>
-    <string name="creativas2">HorariosCTPI</string>
-    <string name="adsitbt">HorariosCTPI</string>
-    <string name="adsil">HorariosCTPI</string>
+    <string name="creativas">Industrias Creativas</string>
+    <string name="adsi">ADSI</string>
+
+
+
+
 </resources>
