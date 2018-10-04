@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -42,7 +43,7 @@ import java.util.Locale;
 
 public class MenuPrincipal extends AppCompatActivity implements OnClickListener {
 
-    ImageView btnManana, btnTarde, btnNoche;
+    ImageView btnManana, btnTarde, btnNoche, imvLogo;
     TextView txtAmbiente, txtNumeroAmbiente,txtReloj, txtHora, txtManana,txtTarde, txtNoche, txtArea;
     Thread reloj;
     Button btnLogin;
@@ -76,6 +77,8 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         fa = this;
         preferences = getSharedPreferences("horarios",MODE_PRIVATE);
         inizialite();
@@ -124,6 +127,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
         btnManana = findViewById(R.id.btnManana);
         btnTarde = findViewById(R.id.btnTarde);
         btnNoche = findViewById(R.id.btnNoche);
+        imvLogo = findViewById(R.id.imvLogo);
         btnLogin = findViewById(R.id.btnLogin);
         txtReloj = findViewById(R.id.txtReloj);
         txtHora = findViewById(R.id.txtHora);
@@ -145,6 +149,19 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
                 for (int i=0; i<ambienteList.size();i++){
                     if (ambienteList.get(i).getApodo().equals(apodoAmbiente)){
                         ambienteObj = ambienteList.get(i);
+
+                        try {
+                            try {
+
+                                Glide.with(MenuPrincipal.this).load(ambienteObj.getIcono()).crossFade().into(imvLogo);
+                            }catch (Exception e){
+
+                            }
+
+                        }catch (Exception e){
+
+                        }
+
                         String tmp = ambienteObj.getNombre();
                         try {
                             if (Integer.parseInt(tmp.substring(tmp.length()-1,tmp.length()))==1){
@@ -344,7 +361,6 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
             case R.id.btnLogin:
                 intent = new Intent(MenuPrincipal.this,IniciarSesion.class);
                 startActivity(intent);
-                finish();
                 break;
 
             case R.id.btnManana:

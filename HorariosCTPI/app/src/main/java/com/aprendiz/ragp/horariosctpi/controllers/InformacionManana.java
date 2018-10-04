@@ -2,6 +2,8 @@ package com.aprendiz.ragp.horariosctpi.controllers;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,6 +21,7 @@ public class InformacionManana extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_informacion_manana);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         bandera = true;
         iniziliate();
         inputValues();
@@ -31,7 +34,8 @@ public class InformacionManana extends AppCompatActivity {
         btnManana = findViewById(R.id.btnManana);
     }
 
-    private void inputValues() { 
+    private void inputValues() {
+        inputData();
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -51,6 +55,7 @@ public class InformacionManana extends AppCompatActivity {
                 }
             }
         });
+        thread.start();
     }
 
     private void inputData() {
@@ -62,9 +67,20 @@ public class InformacionManana extends AppCompatActivity {
         }catch (Exception e){
 
         }
-        
+
+        btnAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        bandera=false;
+    }
 }
