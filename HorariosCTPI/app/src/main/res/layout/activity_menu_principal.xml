@@ -22,12 +22,12 @@
 
     <TextView
         android:id="@+id/txtArea"
-        android:layout_width="148dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="43dp"
+        android:layout_width="166dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/creativas"
+        android:text="Desarrollo de Software"
         android:textColor="@color/colorVerde"
         android:textSize="27sp"
         android:textStyle="bold"
@@ -241,16 +241,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:text="@string/jornanoche"
         android:textColor="@color/azul"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.017"
         app:layout_constraintStart_toEndOf="@+id/btnNoche"
-        app:layout_constraintTop_toBottomOf="@+id/txtHorarioTarde" />
+        app:layout_constraintTop_toBottomOf="@+id/btnTarde" />
 
     <TextView
         android:id="@+id/textView9"
@@ -298,12 +298,12 @@
         android:layout_width="77dp"
         android:layout_height="54dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/txtHorarioTarde"
+        app:layout_constraintTop_toBottomOf="@+id/btnTarde"
         app:srcCompat="@drawable/noche" />
 
     <ImageView
