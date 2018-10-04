@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aprendiz.ragp.horariosctpi.MenuPrincipal;
 import com.aprendiz.ragp.horariosctpi.R;
 import com.aprendiz.ragp.horariosctpi.models.AdapterHorarios;
 import com.aprendiz.ragp.horariosctpi.models.Horario;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -20,7 +23,8 @@ public class HorarioNoche extends AppCompatActivity {
     RecyclerView recyclerView;
     TextView txtInstructorLider, txtPrograma,txtInformacionPrograma,txtFicha;
     Boolean bandera;
-
+    ImageView imgNoche;
+    Button btnAtras;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,8 @@ public class HorarioNoche extends AppCompatActivity {
         txtInstructorLider = findViewById(R.id.txtnstrucotNoche);
         txtFicha = findViewById(R.id.txtFichaNoche);
         recyclerView = findViewById(R.id.recyclerViewNoche);
+        imgNoche = findViewById(R.id.imgNoche);
+        btnAtras = findViewById(R.id.btnAtrasNoche);
     }
 
     private void inputValues(){
@@ -66,6 +72,12 @@ public class HorarioNoche extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btnAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
     }
@@ -82,6 +94,13 @@ public class HorarioNoche extends AppCompatActivity {
         recyclerView.setAdapter(adapterHorarios);
         recyclerView.setLayoutManager(new LinearLayoutManager(HorarioNoche.this,LinearLayoutManager.VERTICAL,false));
         recyclerView.setHasFixedSize(true);
+        try {
+            Glide.with(HorarioNoche.this).load(MenuPrincipal.iconosT.getAzul()).crossFade().into(imgNoche);
+
+        }catch (Exception e){
+
+        }
+
     }
 
     @Override

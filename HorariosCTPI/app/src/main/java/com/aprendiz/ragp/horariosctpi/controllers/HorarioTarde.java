@@ -6,18 +6,23 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aprendiz.ragp.horariosctpi.MenuPrincipal;
 import com.aprendiz.ragp.horariosctpi.R;
 import com.aprendiz.ragp.horariosctpi.models.AdapterHorarios;
 import com.aprendiz.ragp.horariosctpi.models.Horario;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
 public class HorarioTarde extends AppCompatActivity {
     RecyclerView recyclerView;
     TextView txtInstructorLider, txtPrograma,txtInformacionPrograma,txtFicha;
+    Button btnAtras;
+    ImageView imgTarde;
     Boolean bandera;
 
     @Override
@@ -35,6 +40,8 @@ public class HorarioTarde extends AppCompatActivity {
         txtInstructorLider = findViewById(R.id.txtInstructorTarde);
         txtFicha = findViewById(R.id.txtFichaTarde);
         recyclerView = findViewById(R.id.recyclerViewTarde);
+        btnAtras = findViewById(R.id.btnAtrasTarde);
+        imgTarde = findViewById(R.id.imgTarde);
     }
 
     private void inputValues(){
@@ -66,6 +73,12 @@ public class HorarioTarde extends AppCompatActivity {
             }
         });
 
+        btnAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 
@@ -81,6 +94,12 @@ public class HorarioTarde extends AppCompatActivity {
         recyclerView.setAdapter(adapterHorarios);
         recyclerView.setLayoutManager(new LinearLayoutManager(HorarioTarde.this,LinearLayoutManager.VERTICAL,false));
         recyclerView.setHasFixedSize(true);
+        try {
+            Glide.with(HorarioTarde.this).load(MenuPrincipal.iconosT.getNaranja()).crossFade().into(imgTarde);
+
+        }catch (Exception e){
+
+        }
     }
 
     @Override

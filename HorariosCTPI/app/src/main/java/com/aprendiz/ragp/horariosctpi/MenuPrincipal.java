@@ -65,6 +65,9 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     public static Ficha fichaObjM = new Ficha();
     public static Ficha fichaObjT = new Ficha();
     public static Ficha fichaObjN = new Ficha();
+    public static Iconos iconosM = new Iconos();
+    public static Iconos iconosT = new Iconos();
+    public static Iconos iconosN = new Iconos();
 
 
 
@@ -290,6 +293,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
                 for (int i=0; i<iconosList.size();i++){
                     if (iconosList.get(i).getNombre().equals(iconos[0])) {
                         try {
+                            iconosM = iconosList.get(i);
                             iconosManana[0] = iconosList.get(i).getManana();
                             Glide.with(MenuPrincipal.this).load(iconosManana[0]).crossFade().into(btnManana);
 
@@ -301,6 +305,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
 
                     if (iconosList.get(i).getNombre().equals(iconos[1])) {
                         try {
+                            iconosT = iconosList.get(i);
                             iconosTarde[1] = iconosList.get(i).getTarde();
                             Glide.with(MenuPrincipal.this).load(iconosTarde[1]).crossFade().into(btnTarde);
                         }catch (Exception e){
@@ -311,6 +316,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
 
                     if (iconosList.get(i).getNombre().equals(iconos[2])) {
                         try {
+                            iconosN = iconosList.get(i);
                             iconosNoche[2] = iconosList.get(i).getNoche();
                             Glide.with(MenuPrincipal.this).load(iconosNoche[2]).crossFade().into(btnNoche);
                         }catch (Exception e){

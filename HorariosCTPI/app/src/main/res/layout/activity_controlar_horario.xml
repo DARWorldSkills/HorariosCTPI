@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo"
     tools:context=".controllers.ControlarHorario">
 
     <fr.ganfra.materialspinner.MaterialSpinner
@@ -17,24 +18,25 @@
         app:ms_alignLabels="false"
         app:ms_arrowColor="@color/colorPrimary"
         app:ms_arrowSize="16dp"
-        app:ms_baseColor="@color/colorPrimary"
+        app:ms_baseColor="@color/common_google_signin_btn_text_light"
         app:ms_enableErrorLabel="false"
-        app:ms_enableFloatingLabel="false"
+        app:ms_enableFloatingLabel="true"
         app:ms_floatingLabelColor="@color/colorPrimary"
         app:ms_floatingLabelText="floating label"
         app:ms_highlightColor="@color/colorPrimaryDark"
         app:ms_hint="Seleccione un Ambiente"
-        app:ms_hintColor="@color/colorPrimaryDark"
+        app:ms_hintColor="@color/common_google_signin_btn_text_dark_default"
+        app:ms_hintTextSize="12sp"
         app:ms_multiline="false"
         app:ms_thickness="2dp" />
 
 
     <Button
         android:id="@+id/btnGuardar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:text="@string/guardar"
+        android:layout_width="99dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="92dp"
+        android:background="@drawable/botonguardar"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

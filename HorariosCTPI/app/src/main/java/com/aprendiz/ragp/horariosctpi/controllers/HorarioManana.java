@@ -7,12 +7,15 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aprendiz.ragp.horariosctpi.MenuPrincipal;
 import com.aprendiz.ragp.horariosctpi.R;
 import com.aprendiz.ragp.horariosctpi.models.AdapterHorarios;
 import com.aprendiz.ragp.horariosctpi.models.Horario;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -20,6 +23,8 @@ public class HorarioManana extends AppCompatActivity {
     RecyclerView recyclerView;
     TextView txtInstructorLider, txtPrograma,txtInformacionPrograma,txtFicha;
     Boolean bandera;
+    Button btnAtras;
+    ImageView imgManana;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +40,8 @@ public class HorarioManana extends AppCompatActivity {
         txtInstructorLider = findViewById(R.id.txtInstructorManana);
         txtFicha = findViewById(R.id.txtFichaManana);
         recyclerView = findViewById(R.id.recyclerViewManana);
+        btnAtras = findViewById(R.id.btnAtrasManana);
+        imgManana = findViewById(R.id.imgManana);
     }
 
     private void inputValues(){
@@ -65,6 +72,12 @@ public class HorarioManana extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btnAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
     }
@@ -81,6 +94,12 @@ public class HorarioManana extends AppCompatActivity {
         recyclerView.setAdapter(adapterHorarios);
         recyclerView.setLayoutManager(new LinearLayoutManager(HorarioManana.this,LinearLayoutManager.VERTICAL,false));
         recyclerView.setHasFixedSize(true);
+        try {
+            Glide.with(HorarioManana.this).load(MenuPrincipal.iconosM.getVerde()).crossFade().into(imgManana);
+
+        }catch (Exception e){
+
+        }
     }
 
 

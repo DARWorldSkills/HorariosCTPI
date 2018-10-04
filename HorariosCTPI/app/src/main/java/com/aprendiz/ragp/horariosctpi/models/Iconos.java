@@ -5,6 +5,10 @@ public class Iconos {
     private String manana;
     private String tarde;
     private String noche;
+    private String verde;
+    private String naranja;
+    private String azul;
+    private String blanco;
 
     public String getNombre() {
         return nombre;
@@ -36,5 +40,37 @@ public class Iconos {
 
     public void setNoche(String noche) {
         this.noche = noche;
+    }
+
+    public String getVerde() {
+        return verde;
+    }
+
+    public void setVerde(String verde) {
+        this.verde = verde;
+    }
+
+    public String getNaranja() {
+        return naranja;
+    }
+
+    public void setNaranja(String naranja) {
+        this.naranja = naranja;
+    }
+
+    public String getAzul() {
+        return azul;
+    }
+
+    public void setAzul(String azul) {
+        this.azul = azul;
+    }
+
+    public String getBlanco() {
+        return blanco;
+    }
+
+    public void setBlanco(String blanco) {
+        this.blanco = blanco;
     }
 }
