@@ -28,4 +28,29 @@
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imgVistaInfoManana"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnManana"
+        android:layout_width="92dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/botonverde"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.217"
+        app:layout_constraintStart_toEndOf="@+id/txtNombrePrograma"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnAtras"
+        android:layout_width="48dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/botonatras"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgVistaInfoManana"
+        app:layout_constraintVertical_bias="0.473" />
 </android.support.constraint.ConstraintLayout>
