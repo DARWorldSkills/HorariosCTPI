@@ -13,7 +13,6 @@
         android:layout_width="148dp"
         android:layout_height="220dp"
         android:layout_marginStart="28dp"
-        android:background="@drawable/logocreativas"
         android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
