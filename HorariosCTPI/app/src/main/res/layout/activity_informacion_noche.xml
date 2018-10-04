@@ -7,6 +7,19 @@
     android:background="@drawable/fondoinfoazul"
     tools:context=".controllers.InformacionNoche">
 
+    <Button
+        android:id="@+id/btnNoche"
+        android:layout_width="92dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="512dp"
+        android:background="@drawable/botonazul"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toEndOf="@+id/txtNombrePorgramaNoche"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/imgVistaInfonoche"
         android:layout_width="191dp"
