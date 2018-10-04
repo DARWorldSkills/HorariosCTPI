@@ -7,6 +7,19 @@
     android:background="@drawable/fondonoche"
     tools:context=".controllers.HorarioNoche">
 
+    <Button
+        android:id="@+id/btnAtrasNoche"
+        android:layout_width="48dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/botonatras"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtFichaNoche"
+        app:layout_constraintVertical_bias="0.19" />
+
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="196dp"

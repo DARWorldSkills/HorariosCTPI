@@ -7,6 +7,19 @@
     android:background="@drawable/fondotarde"
     tools:context=".controllers.HorarioTarde">
 
+    <Button
+        android:id="@+id/btnAtrasTarde"
+        android:layout_width="48dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/botonatras"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtFichaTarde"
+        app:layout_constraintVertical_bias="0.19" />
+
     <TextView
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
