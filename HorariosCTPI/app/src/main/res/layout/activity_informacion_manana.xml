@@ -4,6 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondoinfoverde"
     tools:context=".controllers.InformacionManana">
 
+    <ImageView
+        android:id="@+id/imgVistaInfoManana"
+        android:layout_width="191dp"
+        android:layout_height="195dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/controlblanco" />
+
+    <TextView
+        android:id="@+id/txtNombrePrograma"
+        android:layout_width="206dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="44dp"
+        android:text="Desarrollo de Videojuegos "
+        android:textColor="@color/grisclaro"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imgVistaInfoManana"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

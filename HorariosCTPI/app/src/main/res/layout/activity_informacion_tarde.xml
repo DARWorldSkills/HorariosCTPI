@@ -4,6 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondoinfonaranaja"
     tools:context=".controllers.InformacionTarde">
 
+    <ImageView
+        android:id="@+id/imgVistaInfotarde"
+        android:layout_width="191dp"
+        android:layout_height="195dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/camarablanca" />
+
+    <TextView
+        android:id="@+id/txtNombrePorgramaTarde"
+        android:layout_width="211dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="44dp"
+        android:text="Video y Animacion 3D"
+        android:textColor="@color/grisclaro"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imgVistaInfotarde"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
