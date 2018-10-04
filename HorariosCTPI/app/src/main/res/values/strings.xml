@@ -16,4 +16,9 @@
     <string name="guardar">Guardar</string>
 
 
+    <string name="informacion">Información del Programa</string>
+    <string name="tecnologo">Técnologo</string>
+    <string name="instructorlider">Instructor Líder</string>
+    <string name="ficha">Ficha:</string>
+
 </resources>
