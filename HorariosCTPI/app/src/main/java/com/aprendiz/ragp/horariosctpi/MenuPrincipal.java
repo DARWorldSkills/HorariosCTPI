@@ -58,7 +58,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     String [] iconosManana =new String[3];
     String [] iconosTarde =new String[3];
     String [] iconosNoche =new String[3];
-    String apodoAmbiente;
+    public  static String apodoAmbiente = "TBT";
     Ambiente ambienteObj = new Ambiente();
 
 
@@ -69,7 +69,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
         inizialite();
-        apodoAmbiente = "TBT";
+
         obtenerHorario();
         obtenerAmbiente();
         obtenerHora();
@@ -163,7 +163,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     private void obtenerHorario() {
         FirebaseApp.initializeApp(this);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference horario = reference.child("TBT");
+        DatabaseReference horario = reference.child(apodoAmbiente);
         horario.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -172,7 +172,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
                 ficha1 = horarioList.get(0).getFicha();
                 ficha2 = horarioList.get(2).getFicha();
                 ficha3 = horarioList.get(4).getFicha();
-
+                Toast.makeText(MenuPrincipal.this, "", Toast.LENGTH_SHORT).show();
                 obtenerFicha();
 
 
@@ -302,6 +302,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
             case R.id.btnLogin:
                 intent = new Intent(MenuPrincipal.this,IniciarSesion.class);
                 startActivity(intent);
+                finish();
                 break;
 
             case R.id.btnManana:
