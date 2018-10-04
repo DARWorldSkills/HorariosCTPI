@@ -1,9 +1,13 @@
 package com.aprendiz.ragp.horariosctpi.controllers;
 
+import android.app.Dialog;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,6 +40,7 @@ public class InformacionManana extends AppCompatActivity {
 
     private void inputValues() {
         inputData();
+        insertarPDF();
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -55,6 +60,12 @@ public class InformacionManana extends AppCompatActivity {
                 }
             }
         });
+        btnAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         thread.start();
     }
 
@@ -68,12 +79,44 @@ public class InformacionManana extends AppCompatActivity {
 
         }
 
-        btnAtras.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+
+    }
+
+    private void insertarPDF(){
+
+        WebView webView = findViewById(R.id.webViewPDF);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebViewClient(new WebViewClient() {
             @Override
-            public void onClick(View v) {
-                finish();
+            public void onPageStarted(WebView view, String url, Bitmap favicon){
+                super.onPageStarted(view, url, favicon);
+
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+
             }
         });
+
+        //Url Ejemplo:
+        String pdf = "https://drive.google.com/file/d/1Xw14bcieRabwfEkMu1DadEyEfmKB1vzb/view";
+
+        //Carga url de .PDF en WebView  mediante Google Drive Viewer.
+        webView.loadUrl("http://www.comercial.usm.cl/wp-content/uploads/2015/10/vica.com_.mx_Promociones_assets_promocion2.pdf");
+
+
+    }
+
+    private void watchVideo(){
+        Dialog dialog = new Dialog(InformacionManana.this);
+        dialog.setContentView(R.layout.item_opaco);
+        WebView webView = dialog.findViewById(R.id.webViewVideo);
 
 
     }
