@@ -6,7 +6,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.aprendiz.ragp.horariosctpi.MenuPrincipal;
 import com.aprendiz.ragp.horariosctpi.R;
+import com.bumptech.glide.Glide;
 
 public class InformacionManana extends AppCompatActivity {
     ImageView imgManana;
@@ -39,7 +41,7 @@ public class InformacionManana extends AppCompatActivity {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    
+
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -52,6 +54,16 @@ public class InformacionManana extends AppCompatActivity {
     }
 
     private void inputData() {
+        String programa = MenuPrincipal.fichaObjM.getPrograma();
+        txtPrograma.setText(programa);
+        try {
+            Glide.with(this).load(MenuPrincipal.iconosM.getBlanco()).crossFade().into(imgManana);
+
+        }catch (Exception e){
+
+        }
+        
+
     }
 
 
