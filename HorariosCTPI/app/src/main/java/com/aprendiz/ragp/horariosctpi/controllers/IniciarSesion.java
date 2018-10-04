@@ -83,6 +83,7 @@ public class IniciarSesion extends AppCompatActivity {
                             i=usuarioList.size();
                             Intent intent = new Intent(IniciarSesion.this,ControlarHorario.class);
                             startActivity(intent);
+                            finish();
 
 
                         }else{
