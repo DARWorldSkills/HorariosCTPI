@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo"
     tools:context=".controllers.IniciarSesion"
     >
 
@@ -23,8 +24,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/ingresenombredeusuario"
-            android:textSize="30sp"
-            android:textStyle="italic" />
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textColorHighlight="@color/common_google_signin_btn_text_dark_focused"
+            android:textColorHint="@color/common_google_signin_btn_text_dark_focused"
+            android:textColorLink="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="30sp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -44,18 +48,26 @@
             android:layout_height="wrap_content"
             android:hint="@string/ingreseclave"
             android:inputType="textPassword"
-            android:textSize="30sp"
-            android:textStyle="italic" />
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textColorHint="@color/common_google_signin_btn_text_dark_focused"
+            android:textColorLink="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="30sp" />
     </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/btnIniciarSesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/iniciarSesion"
+        android:layout_width="95dp"
+        android:layout_height="92dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="220dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/iconoadmin"
         android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.611"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        app:layout_constraintVertical_bias="0.053" />
 </android.support.constraint.ConstraintLayout>

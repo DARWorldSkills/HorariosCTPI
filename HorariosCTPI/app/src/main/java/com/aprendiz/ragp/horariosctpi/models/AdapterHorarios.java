@@ -43,7 +43,7 @@ public class AdapterHorarios extends RecyclerView.Adapter<AdapterHorarios.Holder
         }
         public void connectData(Horario horario){
             TextView txtLunesItem = itemView.findViewById(R.id.txtItemLunes);
-            TextView txtMartesItem = itemView.findViewById(R.id.txtItemMiercoles);
+            TextView txtMartesItem = itemView.findViewById(R.id.txtItemMartes);
             TextView txtMiercolesItem = itemView.findViewById(R.id.txtItemMiercoles);
             TextView txtJuevesItem = itemView.findViewById(R.id.txtItemJueves);
             TextView txtViernesItem = itemView.findViewById(R.id.txtItemViernes);

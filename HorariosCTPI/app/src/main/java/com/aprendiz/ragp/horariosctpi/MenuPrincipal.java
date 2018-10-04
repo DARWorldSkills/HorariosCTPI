@@ -1,6 +1,8 @@
 package com.aprendiz.ragp.horariosctpi;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,7 +43,7 @@ import java.util.Locale;
 public class MenuPrincipal extends AppCompatActivity implements OnClickListener {
 
     ImageView btnManana, btnTarde, btnNoche;
-    TextView txtAmbiente, txtNumeroAmbiente,txtReloj, txtHora;
+    TextView txtAmbiente, txtNumeroAmbiente,txtReloj, txtHora, txtManana,txtTarde, txtNoche, txtArea;
     Thread reloj;
     Button btnLogin;
 
@@ -50,16 +52,19 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     public static List<Ficha> fichaList = new ArrayList<>();
     public static List<Programa> programaList = new ArrayList<>();
     public static List<Iconos> iconosList = new ArrayList<>();
-    String ficha1 ="";
-    String ficha2 ="";
-    String ficha3 ="";
+    public static Activity fa;
+    String ficha[] =new String[3];
     String [] programa =new String[3];
     String [] iconos =new String[3];
     String [] iconosManana =new String[3];
     String [] iconosTarde =new String[3];
     String [] iconosNoche =new String[3];
-    public  static String apodoAmbiente = "TBT";
+    String apodoAmbiente = "TBT";
     Ambiente ambienteObj = new Ambiente();
+    SharedPreferences preferences;
+    public static Ficha fichaObjM = new Ficha();
+    public static Ficha fichaObjT = new Ficha();
+    public static Ficha fichaObjN = new Ficha();
 
 
 
@@ -68,8 +73,10 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+        fa = this;
+        preferences = getSharedPreferences("horarios",MODE_PRIVATE);
         inizialite();
-
+        apodoAmbiente =preferences.getString("elegido","TBT");
         obtenerHorario();
         obtenerAmbiente();
         obtenerHora();
@@ -107,6 +114,10 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     private void inizialite() {
         txtAmbiente = findViewById(R.id.txtAmbiente);
         txtNumeroAmbiente = findViewById(R.id.txtNumeroAmbiente);
+        txtManana = findViewById(R.id.txtHorarioManana);
+        txtTarde = findViewById(R.id.txtHorarioTarde);
+        txtNoche = findViewById(R.id.txtHorarioNoche);
+        txtArea = findViewById(R.id.txtArea);
         btnManana = findViewById(R.id.btnManana);
         btnTarde = findViewById(R.id.btnTarde);
         btnNoche = findViewById(R.id.btnNoche);
@@ -136,15 +147,18 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
                             if (Integer.parseInt(tmp.substring(tmp.length()-1,tmp.length()))==1){
                                 txtAmbiente.setText(tmp.substring(0,tmp.length()-1));
                                 txtNumeroAmbiente.setText(Integer.toString(1));
+                                txtArea.setText(tmp.substring(tmp.length()-1,tmp.length()));
                             }
 
                             if (Integer.parseInt(tmp.substring(tmp.length()-1,tmp.length()))==2){
                                 txtAmbiente.setText(tmp.substring(0,tmp.length()-1));
                                 txtNumeroAmbiente.setText(Integer.toString(2));
+                                txtArea.setText(tmp.substring(tmp.length()-1,tmp.length()));
                             }
 
                         }catch (Exception e){
                             txtAmbiente.setText(tmp);
+                            txtArea.setText(tmp);
                         }
 
                     }
@@ -160,7 +174,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
         });
     }
 
-    private void obtenerHorario() {
+    public void obtenerHorario() {
         FirebaseApp.initializeApp(this);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         DatabaseReference horario = reference.child(apodoAmbiente);
@@ -169,10 +183,9 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 GenericTypeIndicator<ArrayList<Horario>> t = new GenericTypeIndicator<ArrayList<Horario>>(){};
                 horarioList = dataSnapshot.getValue(t);
-                ficha1 = horarioList.get(0).getFicha();
-                ficha2 = horarioList.get(2).getFicha();
-                ficha3 = horarioList.get(4).getFicha();
-                Toast.makeText(MenuPrincipal.this, "", Toast.LENGTH_SHORT).show();
+                ficha[0] = horarioList.get(0).getFicha();
+                ficha[1] = horarioList.get(2).getFicha();
+                ficha[2] = horarioList.get(4).getFicha();
                 obtenerFicha();
 
 
@@ -194,16 +207,22 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
                 GenericTypeIndicator<ArrayList<Ficha>> t = new GenericTypeIndicator<ArrayList<Ficha>>(){};
                 fichaList = dataSnapshot.getValue(t);
                 for (int i=0; i<fichaList.size();i++){
-                    if (fichaList.get(i).getNumero().equals(ficha1)) {
+                    if (fichaList.get(i).getNumero().equals(ficha[0])) {
+                        fichaObjM = fichaList.get(i);
                         programa[0] = fichaList.get(i).getPrograma();
+                        txtManana.setText(programa[0]);
                     }
 
-                    if (fichaList.get(i).getNumero().equals(ficha2)) {
+                    if (fichaList.get(i).getNumero().equals(ficha[1])) {
+                        fichaObjT = fichaList.get(i);
                         programa[1] = fichaList.get(i).getPrograma();
+                        txtTarde.setText(programa[1]);
                     }
 
-                    if (fichaList.get(i).getNumero().equals(ficha3)) {
+                    if (fichaList.get(i).getNumero().equals(ficha[2])) {
                         programa[2] = fichaList.get(i).getPrograma();
+                        fichaObjN = fichaList.get(i);
+                        txtNoche.setText(programa[2]);
 
                     }
                 }
@@ -219,6 +238,8 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
             }
         });
     }
+
+
 
     private void obtenerPrograma(){
         FirebaseApp.initializeApp(this);
@@ -269,19 +290,25 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
                 for (int i=0; i<iconosList.size();i++){
                     if (iconosList.get(i).getNombre().equals(iconos[0])) {
                         iconosManana[0] = iconosList.get(i).getManana();
-                        Glide.with(MenuPrincipal.this).load(iconosManana[0]).crossFade().into(btnManana);
+                        if (iconosManana[0]!=null) {
+                            Glide.with(MenuPrincipal.this).load(iconosManana[0]).crossFade().into(btnManana);
 
+                        }
 
                     }
 
                     if (iconosList.get(i).getNombre().equals(iconos[1])) {
                         iconosTarde[1] = iconosList.get(i).getTarde();
-                        Glide.with(MenuPrincipal.this).load(iconosTarde[1]).crossFade().into(btnTarde);
+                        if (iconosTarde[1]!=null) {
+                            Glide.with(MenuPrincipal.this).load(iconosTarde[1]).crossFade().into(btnTarde);
+                        }
                     }
 
                     if (iconosList.get(i).getNombre().equals(iconos[2])) {
                         iconosNoche[2] = iconosList.get(i).getNoche();
-                        Glide.with(MenuPrincipal.this).load(iconosNoche[2]).crossFade().into(btnNoche);
+                        if (iconosNoche[2]!=null) {
+                            Glide.with(MenuPrincipal.this).load(iconosNoche[2]).crossFade().into(btnNoche);
+                        }
                     }
 
                 }
@@ -294,6 +321,8 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
             }
         });
     }
+
+
 
     @Override
     public void onClick(View v) {

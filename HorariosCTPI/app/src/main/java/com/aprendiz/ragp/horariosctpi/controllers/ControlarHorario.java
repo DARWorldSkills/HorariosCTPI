@@ -1,6 +1,7 @@
 package com.aprendiz.ragp.horariosctpi.controllers;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,15 +21,20 @@ public class ControlarHorario extends AppCompatActivity {
     List<String> listaApodos= new ArrayList<>();
     List<Ambiente> ambienteList = new ArrayList<>();
     Button btnGuardar;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controlar_horario);
+        preferences = getSharedPreferences("horarios",MODE_PRIVATE);
+        editor = preferences.edit();
         spinner = findViewById(R.id.spinnerHorarios);
         btnGuardar = findViewById(R.id.btnGuardar);
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MenuPrincipal.fa.finish();
                 Intent intent = new Intent(ControlarHorario.this,MenuPrincipal.class);
                 startActivity(intent);
                 finish();
@@ -55,7 +61,8 @@ public class ControlarHorario extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
             public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
-                MenuPrincipal.apodoAmbiente= item.toString();
+                editor.putString("elegido",item.toString());
+                editor.commit();
             }
         });
     }

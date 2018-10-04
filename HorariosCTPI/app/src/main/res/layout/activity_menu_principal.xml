@@ -99,7 +99,7 @@
         app:layout_constraintVertical_bias="0.51" />
 
     <TextView
-        android:id="@+id/txtHorarioMañana"
+        android:id="@+id/txtHorarioManana"
         android:layout_width="217dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -204,7 +204,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/btnTarde"
-        app:layout_constraintTop_toBottomOf="@+id/txtHorarioMañana" />
+        app:layout_constraintTop_toBottomOf="@+id/txtHorarioManana" />
 
     <TextView
         android:id="@+id/textView6"
@@ -316,7 +316,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/txtHorarioMañana"
+        app:layout_constraintTop_toBottomOf="@+id/txtHorarioManana"
         app:srcCompat="@drawable/tarde" />
 
     <Button
