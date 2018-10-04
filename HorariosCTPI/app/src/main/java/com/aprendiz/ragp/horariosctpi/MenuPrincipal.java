@@ -290,19 +290,25 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
                 for (int i=0; i<iconosList.size();i++){
                     if (iconosList.get(i).getNombre().equals(iconos[0])) {
                         iconosManana[0] = iconosList.get(i).getManana();
-                        Glide.with(MenuPrincipal.this).load(iconosManana[0]).crossFade().into(btnManana);
+                        if (iconosManana[0]!=null) {
+                            Glide.with(MenuPrincipal.this).load(iconosManana[0]).crossFade().into(btnManana);
 
+                        }
 
                     }
 
                     if (iconosList.get(i).getNombre().equals(iconos[1])) {
                         iconosTarde[1] = iconosList.get(i).getTarde();
-                        Glide.with(MenuPrincipal.this).load(iconosTarde[1]).crossFade().into(btnTarde);
+                        if (iconosTarde[1]!=null) {
+                            Glide.with(MenuPrincipal.this).load(iconosTarde[1]).crossFade().into(btnTarde);
+                        }
                     }
 
                     if (iconosList.get(i).getNombre().equals(iconos[2])) {
                         iconosNoche[2] = iconosList.get(i).getNoche();
-                        Glide.with(MenuPrincipal.this).load(iconosNoche[2]).crossFade().into(btnNoche);
+                        if (iconosNoche[2]!=null) {
+                            Glide.with(MenuPrincipal.this).load(iconosNoche[2]).crossFade().into(btnNoche);
+                        }
                     }
 
                 }

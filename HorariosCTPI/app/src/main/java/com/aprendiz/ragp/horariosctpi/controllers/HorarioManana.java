@@ -82,4 +82,11 @@ public class HorarioManana extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(HorarioManana.this,LinearLayoutManager.VERTICAL,false));
         recyclerView.setHasFixedSize(true);
     }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        bandera=false;
+    }
 }
