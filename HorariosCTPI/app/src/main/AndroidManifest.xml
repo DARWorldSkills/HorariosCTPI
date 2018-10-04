@@ -20,13 +20,17 @@
         </activity>
         <activity android:name=".controllers.HorarioManana" />
         <activity android:name=".controllers.HorarioTarde" />
-        <activity android:name=".controllers.HorarioNoche"></activity>
+        <activity android:name=".controllers.HorarioNoche" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
         <activity android:name=".controllers.IniciarSesion" />
-        <activity android:name=".controllers.ControlarHorario"></activity>
+        <activity android:name=".controllers.ControlarHorario" />
+        <activity android:name=".controllers.InformacionManana" />
+        <activity android:name=".controllers.InformacionTarde" />
+        <activity android:name=".controllers.InformacionNoche"></activity>
     </application>
 
 </manifest>
