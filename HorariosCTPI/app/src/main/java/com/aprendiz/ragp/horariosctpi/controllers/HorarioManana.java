@@ -91,17 +91,22 @@ public class HorarioManana extends AppCompatActivity {
         txtInstructorLider.setText(instructor);
         txtPrograma.setText(nombrePrograma);
         txtFicha.setText(ficha);
-        List<Horario> horarioList = MenuPrincipal.horarioList.subList(0,2);
-        AdapterHorarios adapterHorarios = new AdapterHorarios(horarioList,this);
-        recyclerView.setAdapter(adapterHorarios);
-        recyclerView.setLayoutManager(new LinearLayoutManager(HorarioManana.this,LinearLayoutManager.VERTICAL,false));
-        recyclerView.setHasFixedSize(true);
         try {
-            Glide.with(HorarioManana.this).load(MenuPrincipal.iconosM.getVerde()).crossFade().into(imgManana);
+            List<Horario> horarioList = MenuPrincipal.horarioList.subList(0,2);
+            AdapterHorarios adapterHorarios = new AdapterHorarios(horarioList,this,getResources().getColor(R.color.verde));
+            recyclerView.setAdapter(adapterHorarios);
+            recyclerView.setLayoutManager(new LinearLayoutManager(HorarioManana.this,LinearLayoutManager.VERTICAL,false));
+            recyclerView.setHasFixedSize(true);
+            try {
+                Glide.with(HorarioManana.this).load(MenuPrincipal.iconosM.getVerde()).crossFade().into(imgManana);
 
+            }catch (Exception e){
+
+            }
         }catch (Exception e){
 
         }
+
     }
 
 

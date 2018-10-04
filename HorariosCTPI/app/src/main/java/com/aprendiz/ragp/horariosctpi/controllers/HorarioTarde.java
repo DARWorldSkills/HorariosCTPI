@@ -91,17 +91,23 @@ public class HorarioTarde extends AppCompatActivity {
         txtInstructorLider.setText(instructor);
         txtPrograma.setText(nombrePrograma);
         txtFicha.setText(ficha);
-        List<Horario> horarioList = MenuPrincipal.horarioList.subList(2,4);
-        AdapterHorarios adapterHorarios = new AdapterHorarios(horarioList,this);
-        recyclerView.setAdapter(adapterHorarios);
-        recyclerView.setLayoutManager(new LinearLayoutManager(HorarioTarde.this,LinearLayoutManager.VERTICAL,false));
-        recyclerView.setHasFixedSize(true);
         try {
-            Glide.with(HorarioTarde.this).load(MenuPrincipal.iconosT.getNaranja()).crossFade().into(imgTarde);
+            List<Horario> horarioList = MenuPrincipal.horarioList.subList(2,4);
+            AdapterHorarios adapterHorarios = new AdapterHorarios(horarioList,this,getResources().getColor(R.color.naranja));
+            recyclerView.setAdapter(adapterHorarios);
+            recyclerView.setLayoutManager(new LinearLayoutManager(HorarioTarde.this,LinearLayoutManager.VERTICAL,false));
+            recyclerView.setHasFixedSize(true);
+            try {
+                Glide.with(HorarioTarde.this).load(MenuPrincipal.iconosT.getNaranja()).crossFade().into(imgTarde);
 
-        }catch (Exception e){
+            }catch (Exception e){
+
+            }
+
+        }catch (Exception e) {
 
         }
+
     }
 
     @Override

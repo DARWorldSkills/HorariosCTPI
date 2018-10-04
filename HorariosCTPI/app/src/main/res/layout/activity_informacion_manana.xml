@@ -53,4 +53,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgVistaInfoManana"
         app:layout_constraintVertical_bias="0.473" />
+
+    <WebView
+        android:layout_width="1000dp"
+        android:layout_height="420dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btnAtras" />
 </android.support.constraint.ConstraintLayout>

@@ -17,11 +17,13 @@ public class AdapterHorarios extends RecyclerView.Adapter<AdapterHorarios.Holder
     int i=0;
     List<Horario> horarioList;
     Context context;
+    int color;
 
 
-    public AdapterHorarios(List<Horario> horarioList, Context context) {
+    public AdapterHorarios(List<Horario> horarioList, Context context, int color) {
         this.horarioList = horarioList;
         this.context = context;
+        this.color = color;
     }
 
     @Override
@@ -59,6 +61,12 @@ public class AdapterHorarios extends RecyclerView.Adapter<AdapterHorarios.Holder
             txtJuevesItem.setText(horario.getJueves());
             txtViernesItem.setText(horario.getViernes());
             txtSabadoItem.setText(horario.getSabado());
+            txtLunesItem.setTextColor(color);
+            txtMartesItem.setTextColor(color);
+            txtMiercolesItem.setTextColor(color);
+            txtJuevesItem.setTextColor(color);
+            txtViernesItem.setTextColor(color);
+            txtSabadoItem.setTextColor(color);
 
 
         }

@@ -91,13 +91,19 @@ public class HorarioNoche extends AppCompatActivity {
         txtInstructorLider.setText(instructor);
         txtPrograma.setText(nombrePrograma);
         txtFicha.setText(ficha);
-        List<Horario> horarioList = MenuPrincipal.horarioList.subList(4,5);
-        AdapterHorarios adapterHorarios = new AdapterHorarios(horarioList,this);
-        recyclerView.setAdapter(adapterHorarios);
-        recyclerView.setLayoutManager(new LinearLayoutManager(HorarioNoche.this,LinearLayoutManager.VERTICAL,false));
-        recyclerView.setHasFixedSize(true);
         try {
-            Glide.with(HorarioNoche.this).load(MenuPrincipal.iconosT.getAzul()).crossFade().into(imgNoche);
+
+            List<Horario> horarioList = MenuPrincipal.horarioList.subList(4,5);
+            AdapterHorarios adapterHorarios = new AdapterHorarios(horarioList,this,getResources().getColor(R.color.azul));
+            recyclerView.setAdapter(adapterHorarios);
+            recyclerView.setLayoutManager(new LinearLayoutManager(HorarioNoche.this,LinearLayoutManager.VERTICAL,false));
+            recyclerView.setHasFixedSize(true);
+            try {
+                Glide.with(HorarioNoche.this).load(MenuPrincipal.iconosT.getAzul()).crossFade().into(imgNoche);
+
+            }catch (Exception e){
+
+            }
 
         }catch (Exception e){
 
