@@ -6,20 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".controllers.ControlarHorario">
 
-    <com.jaredrummler.materialspinner.MaterialSpinner
+    <fr.ganfra.materialspinner.MaterialSpinner
         android:id="@+id/spinnerHorarios"
-        android:layout_width="match_parent"
+        android:layout_width="600dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="240dp"
-        android:layout_marginEnd="32dp"
-        android:textSize="30sp"
+        android:layout_marginTop="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:ms_arrow_tint="@color/colorPrimaryDark"
-        app:ms_background_color="@color/common_google_signin_btn_text_dark_disabled"
-        app:ms_text_color="@color/common_google_signin_btn_text_dark_default" />
+        app:ms_alignLabels="false"
+        app:ms_arrowColor="@color/colorPrimary"
+        app:ms_arrowSize="16dp"
+        app:ms_baseColor="@color/colorPrimary"
+        app:ms_enableErrorLabel="false"
+        app:ms_enableFloatingLabel="false"
+        app:ms_floatingLabelColor="@color/colorPrimary"
+        app:ms_floatingLabelText="floating label"
+        app:ms_highlightColor="@color/colorPrimaryDark"
+        app:ms_hint="Seleccione un Ambiente"
+        app:ms_hintColor="@color/colorPrimaryDark"
+        app:ms_multiline="false"
+        app:ms_thickness="2dp" />
+
 
     <Button
         android:id="@+id/btnGuardar"

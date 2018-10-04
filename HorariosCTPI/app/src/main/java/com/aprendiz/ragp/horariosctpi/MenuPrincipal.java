@@ -147,13 +147,13 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
                             if (Integer.parseInt(tmp.substring(tmp.length()-1,tmp.length()))==1){
                                 txtAmbiente.setText(tmp.substring(0,tmp.length()-1));
                                 txtNumeroAmbiente.setText(Integer.toString(1));
-                                txtArea.setText(tmp.substring(tmp.length()-1,tmp.length()));
+                                txtArea.setText(tmp.substring(0,tmp.length()-1));
                             }
 
                             if (Integer.parseInt(tmp.substring(tmp.length()-1,tmp.length()))==2){
                                 txtAmbiente.setText(tmp.substring(0,tmp.length()-1));
                                 txtNumeroAmbiente.setText(Integer.toString(2));
-                                txtArea.setText(tmp.substring(tmp.length()-1,tmp.length()));
+                                txtArea.setText(tmp.substring(0,tmp.length()-1));
                             }
 
                         }catch (Exception e){
@@ -289,25 +289,32 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
 
                 for (int i=0; i<iconosList.size();i++){
                     if (iconosList.get(i).getNombre().equals(iconos[0])) {
-                        iconosManana[0] = iconosList.get(i).getManana();
-                        if (iconosManana[0]!=null) {
+                        try {
+                            iconosManana[0] = iconosList.get(i).getManana();
                             Glide.with(MenuPrincipal.this).load(iconosManana[0]).crossFade().into(btnManana);
+
+                        }catch (Exception e){
 
                         }
 
                     }
 
                     if (iconosList.get(i).getNombre().equals(iconos[1])) {
-                        iconosTarde[1] = iconosList.get(i).getTarde();
-                        if (iconosTarde[1]!=null) {
+                        try {
+                            iconosTarde[1] = iconosList.get(i).getTarde();
                             Glide.with(MenuPrincipal.this).load(iconosTarde[1]).crossFade().into(btnTarde);
+                        }catch (Exception e){
+
                         }
+
                     }
 
                     if (iconosList.get(i).getNombre().equals(iconos[2])) {
-                        iconosNoche[2] = iconosList.get(i).getNoche();
-                        if (iconosNoche[2]!=null) {
+                        try {
+                            iconosNoche[2] = iconosList.get(i).getNoche();
                             Glide.with(MenuPrincipal.this).load(iconosNoche[2]).crossFade().into(btnNoche);
+                        }catch (Exception e){
+
                         }
                     }
 

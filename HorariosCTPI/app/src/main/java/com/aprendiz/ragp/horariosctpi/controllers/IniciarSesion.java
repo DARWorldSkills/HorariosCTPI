@@ -76,7 +76,6 @@ public class IniciarSesion extends AppCompatActivity {
         if (nombre.length()>0 && clave.length()>0) {
             if (usuarioList != null) {
                 for (int i = 0; i < usuarioList.size(); i++) {
-                    Toast.makeText(this, ""+usuarioList.get(i).getNombre(), Toast.LENGTH_SHORT).show();
                     if (usuarioList.get(i).getNombre().equals(nombre)){
                         bandera = true;
                         if (usuarioList.get(i).getClave().equals(clave)){

@@ -7,14 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.aprendiz.ragp.horariosctpi.MenuPrincipal;
 import com.aprendiz.ragp.horariosctpi.R;
 import com.aprendiz.ragp.horariosctpi.models.Ambiente;
-import com.jaredrummler.materialspinner.MaterialSpinner;
+
 
 import java.util.ArrayList;
 import java.util.List;
+import fr.ganfra.materialspinner.MaterialSpinner;
 
 public class ControlarHorario extends AppCompatActivity {
     MaterialSpinner spinner;
@@ -34,10 +36,22 @@ public class ControlarHorario extends AppCompatActivity {
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MenuPrincipal.fa.finish();
-                Intent intent = new Intent(ControlarHorario.this,MenuPrincipal.class);
-                startActivity(intent);
-                finish();
+                try {
+                    editor.putString("elegido",spinner.getSelectedItem().toString());
+                    editor.commit();
+                    MenuPrincipal.fa.finish();
+                    Intent intent = new Intent(ControlarHorario.this,MenuPrincipal.class);
+                    startActivity(intent);
+                    finish();
+                }catch (Exception e){
+                    MenuPrincipal.fa.finish();
+                    Intent intent = new Intent(ControlarHorario.this,MenuPrincipal.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+
+
             }
         });
         listApodos();
@@ -58,12 +72,6 @@ public class ControlarHorario extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,listaApodos);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
-                editor.putString("elegido",item.toString());
-                editor.commit();
-            }
-        });
+
     }
 }
