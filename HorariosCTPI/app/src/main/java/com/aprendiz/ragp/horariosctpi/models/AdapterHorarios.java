@@ -1,6 +1,8 @@
 package com.aprendiz.ragp.horariosctpi.models;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +14,14 @@ import com.aprendiz.ragp.horariosctpi.R;
 import java.util.List;
 
 public class AdapterHorarios extends RecyclerView.Adapter<AdapterHorarios.Holder> {
+    int i=0;
     List<Horario> horarioList;
+    Context context;
 
-    public AdapterHorarios(List<Horario> horarioList) {
+
+    public AdapterHorarios(List<Horario> horarioList, Context context) {
         this.horarioList = horarioList;
+        this.context = context;
     }
 
     @Override
@@ -35,9 +41,7 @@ public class AdapterHorarios extends RecyclerView.Adapter<AdapterHorarios.Holder
     public int getItemCount() {
         return horarioList.size();
     }
-
     public class Holder extends RecyclerView.ViewHolder {
-        int i=0;
         public Holder(View itemView) {
             super(itemView);
         }

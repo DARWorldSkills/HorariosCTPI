@@ -92,7 +92,7 @@ public class HorarioTarde extends AppCompatActivity {
         txtPrograma.setText(nombrePrograma);
         txtFicha.setText(ficha);
         List<Horario> horarioList = MenuPrincipal.horarioList.subList(2,4);
-        AdapterHorarios adapterHorarios = new AdapterHorarios(horarioList);
+        AdapterHorarios adapterHorarios = new AdapterHorarios(horarioList,this);
         recyclerView.setAdapter(adapterHorarios);
         recyclerView.setLayoutManager(new LinearLayoutManager(HorarioTarde.this,LinearLayoutManager.VERTICAL,false));
         recyclerView.setHasFixedSize(true);

@@ -92,7 +92,7 @@ public class HorarioManana extends AppCompatActivity {
         txtPrograma.setText(nombrePrograma);
         txtFicha.setText(ficha);
         List<Horario> horarioList = MenuPrincipal.horarioList.subList(0,2);
-        AdapterHorarios adapterHorarios = new AdapterHorarios(horarioList);
+        AdapterHorarios adapterHorarios = new AdapterHorarios(horarioList,this);
         recyclerView.setAdapter(adapterHorarios);
         recyclerView.setLayoutManager(new LinearLayoutManager(HorarioManana.this,LinearLayoutManager.VERTICAL,false));
         recyclerView.setHasFixedSize(true);
