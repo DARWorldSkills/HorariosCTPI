@@ -53,9 +53,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     public static List<Programa> programaList = new ArrayList<>();
     public static List<Iconos> iconosList = new ArrayList<>();
     public static Activity fa;
-    String ficha1 ="";
-    String ficha2 ="";
-    String ficha3 ="";
+    String ficha[] =new String[3];
     String [] programa =new String[3];
     String [] iconos =new String[3];
     String [] iconosManana =new String[3];
@@ -64,6 +62,9 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     String apodoAmbiente = "TBT";
     Ambiente ambienteObj = new Ambiente();
     SharedPreferences preferences;
+    public static Ficha fichaObjM = new Ficha();
+    public static Ficha fichaObjT = new Ficha();
+    public static Ficha fichaObjN = new Ficha();
 
 
 
@@ -182,9 +183,9 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 GenericTypeIndicator<ArrayList<Horario>> t = new GenericTypeIndicator<ArrayList<Horario>>(){};
                 horarioList = dataSnapshot.getValue(t);
-                ficha1 = horarioList.get(0).getFicha();
-                ficha2 = horarioList.get(2).getFicha();
-                ficha3 = horarioList.get(4).getFicha();
+                ficha[0] = horarioList.get(0).getFicha();
+                ficha[1] = horarioList.get(2).getFicha();
+                ficha[2] = horarioList.get(4).getFicha();
                 obtenerFicha();
 
 
@@ -206,18 +207,21 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
                 GenericTypeIndicator<ArrayList<Ficha>> t = new GenericTypeIndicator<ArrayList<Ficha>>(){};
                 fichaList = dataSnapshot.getValue(t);
                 for (int i=0; i<fichaList.size();i++){
-                    if (fichaList.get(i).getNumero().equals(ficha1)) {
+                    if (fichaList.get(i).getNumero().equals(ficha[0])) {
+                        fichaObjM = fichaList.get(i);
                         programa[0] = fichaList.get(i).getPrograma();
                         txtManana.setText(programa[0]);
                     }
 
-                    if (fichaList.get(i).getNumero().equals(ficha2)) {
+                    if (fichaList.get(i).getNumero().equals(ficha[1])) {
+                        fichaObjT = fichaList.get(i);
                         programa[1] = fichaList.get(i).getPrograma();
                         txtTarde.setText(programa[1]);
                     }
 
-                    if (fichaList.get(i).getNumero().equals(ficha3)) {
+                    if (fichaList.get(i).getNumero().equals(ficha[2])) {
                         programa[2] = fichaList.get(i).getPrograma();
+                        fichaObjN = fichaList.get(i);
                         txtNoche.setText(programa[2]);
 
                     }
