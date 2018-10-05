@@ -99,7 +99,7 @@ public class HorarioNoche extends AppCompatActivity {
             recyclerView.setLayoutManager(new LinearLayoutManager(HorarioNoche.this,LinearLayoutManager.VERTICAL,false));
             recyclerView.setHasFixedSize(true);
             try {
-                Glide.with(HorarioNoche.this).load(MenuPrincipal.iconosT.getAzul()).crossFade().into(imgNoche);
+                Glide.with(HorarioNoche.this).load(MenuPrincipal.iconosN.getAzul()).crossFade().into(imgNoche);
 
             }catch (Exception e){
 
