@@ -25,6 +25,7 @@ import com.aprendiz.ragp.horariosctpi.models.Ambiente;
 import com.aprendiz.ragp.horariosctpi.models.Ficha;
 import com.aprendiz.ragp.horariosctpi.models.Horario;
 import com.aprendiz.ragp.horariosctpi.models.Iconos;
+import com.aprendiz.ragp.horariosctpi.models.Instructor;
 import com.aprendiz.ragp.horariosctpi.models.Programa;
 import com.bumptech.glide.Glide;
 import com.google.firebase.FirebaseApp;
@@ -53,6 +54,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     public static List<Ficha> fichaList = new ArrayList<>();
     public static List<Programa> programaList = new ArrayList<>();
     public static List<Iconos> iconosList = new ArrayList<>();
+    public static List<Instructor> instructorList = new ArrayList<>();
     public static Activity fa;
     String ficha[] =new String[3];
     String [] programa =new String[3];
@@ -89,7 +91,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
         obtenerHorario();
         obtenerAmbiente();
         obtenerHora();
-
+        obtenerInstructor();
     }
 
     private void obtenerHora() {
@@ -360,6 +362,26 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     }
 
 
+    private void obtenerInstructor(){
+        FirebaseApp.initializeApp(this);
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference horario = reference.child("Instructores");
+        horario.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                GenericTypeIndicator<ArrayList<Instructor>> t = new GenericTypeIndicator<ArrayList<Instructor>>(){};
+                instructorList = dataSnapshot.getValue(t);
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 
     @Override
     public void onClick(View v) {

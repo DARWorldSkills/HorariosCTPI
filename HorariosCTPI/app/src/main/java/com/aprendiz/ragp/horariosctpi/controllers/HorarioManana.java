@@ -22,10 +22,11 @@ import java.util.List;
 
 public class HorarioManana extends AppCompatActivity {
     RecyclerView recyclerView;
-    TextView txtInstructorLider, txtPrograma,txtInformacionPrograma,txtFicha, txtComentarios;
+    TextView txtInstructorLider, txtPrograma,txtInformacionPrograma,txtFicha,txtComentarios;
     Boolean bandera;
     Button btnAtras;
     ImageView imgManana;
+    String abreviaciones;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,8 +109,8 @@ public class HorarioManana extends AppCompatActivity {
         }catch (Exception e){
 
         }
-
     }
+
 
 
     @Override
