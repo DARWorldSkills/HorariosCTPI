@@ -53,20 +53,17 @@ public class AdapterHorarios extends RecyclerView.Adapter<AdapterHorarios.Holder
             TextView txtMiercolesItem = itemView.findViewById(R.id.txtItemMiercoles);
             TextView txtJuevesItem = itemView.findViewById(R.id.txtItemJueves);
             TextView txtViernesItem = itemView.findViewById(R.id.txtItemViernes);
-            TextView txtSabadoItem = itemView.findViewById(R.id.txtItemSabado);
 
             txtLunesItem.setText(horario.getLunes());
             txtMartesItem.setText(horario.getMartes());
             txtMiercolesItem.setText(horario.getMiercoles());
             txtJuevesItem.setText(horario.getJueves());
             txtViernesItem.setText(horario.getViernes());
-            txtSabadoItem.setText(horario.getSabado());
             txtLunesItem.setTextColor(color);
             txtMartesItem.setTextColor(color);
             txtMiercolesItem.setTextColor(color);
             txtJuevesItem.setTextColor(color);
             txtViernesItem.setTextColor(color);
-            txtSabadoItem.setTextColor(color);
 
 
         }

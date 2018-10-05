@@ -2,6 +2,7 @@ package com.aprendiz.ragp.horariosctpi.controllers;
 
 import android.app.Dialog;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +11,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.aprendiz.ragp.horariosctpi.MenuPrincipal;
 import com.aprendiz.ragp.horariosctpi.R;
@@ -66,6 +69,12 @@ public class InformacionManana extends AppCompatActivity {
                 finish();
             }
         });
+        btnManana.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                watchVideo();
+            }
+        });
         thread.start();
     }
 
@@ -116,7 +125,15 @@ public class InformacionManana extends AppCompatActivity {
     private void watchVideo(){
         Dialog dialog = new Dialog(InformacionManana.this);
         dialog.setContentView(R.layout.item_opaco);
-        WebView webView = dialog.findViewById(R.id.webViewVideo);
+        VideoView webView = dialog.findViewById(R.id.webVideo);
+        Uri uri = Uri.parse("http://techslides.com/demos/sample-videos/small.mp4");
+        webView.setMediaController(new MediaController(this));
+        webView.setVideoURI(uri);
+        webView.requestFocus();
+        dialog.setCancelable(true);
+        webView.start();
+        dialog.show();
+
 
 
     }

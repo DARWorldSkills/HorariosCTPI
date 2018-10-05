@@ -93,7 +93,7 @@ public class HorarioNoche extends AppCompatActivity {
         txtFicha.setText(ficha);
         try {
 
-            List<Horario> horarioList = MenuPrincipal.horarioList.subList(4,5);
+            List<Horario> horarioList = MenuPrincipal.horarioList.subList(6,7);
             AdapterHorarios adapterHorarios = new AdapterHorarios(horarioList,this,getResources().getColor(R.color.azul));
             recyclerView.setAdapter(adapterHorarios);
             recyclerView.setLayoutManager(new LinearLayoutManager(HorarioNoche.this,LinearLayoutManager.VERTICAL,false));
