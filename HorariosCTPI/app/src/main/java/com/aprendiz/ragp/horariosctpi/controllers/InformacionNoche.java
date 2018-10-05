@@ -1,12 +1,19 @@
 package com.aprendiz.ragp.horariosctpi.controllers;
 
+import android.app.Dialog;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.aprendiz.ragp.horariosctpi.MenuPrincipal;
 import com.aprendiz.ragp.horariosctpi.R;
@@ -14,7 +21,7 @@ import com.bumptech.glide.Glide;
 
 public class InformacionNoche extends AppCompatActivity {
     TextView txtPrograma;
-    Button btnAtras;
+    Button btnAtras, btnNoche;
     ImageView imgNoche;
     boolean bandera;
     @Override
@@ -30,12 +37,14 @@ public class InformacionNoche extends AppCompatActivity {
     private void inizialite() {
         txtPrograma = findViewById(R.id.txtNombrePorgramaNoche);
         btnAtras = findViewById(R.id.btnAtrasNoche);
+        btnNoche = findViewById(R.id.btnNoche1);
         imgNoche = findViewById(R.id.imgVistaInfonoche);
 
     }
 
     private void inputValues() {
         inputData();
+        insertarPDF();
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -63,6 +72,12 @@ public class InformacionNoche extends AppCompatActivity {
                 finish();
             }
         });
+        btnNoche.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                watchVideo();
+            }
+        });
     }
 
     private void inputData() {
@@ -77,6 +92,46 @@ public class InformacionNoche extends AppCompatActivity {
 
 
     }
+
+    private void insertarPDF(){
+
+        WebView webView = findViewById(R.id.webViewPDF);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon){
+                super.onPageStarted(view, url, favicon);
+
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+
+            }
+        });
+
+        String pdf = MenuPrincipal.programaN.getDescripcion();
+        webView.getSettings().setJavaScriptEnabled(true);
+
+        webView.loadUrl(pdf);
+
+
+    }
+
+    private void watchVideo(){
+        Dialog dialog = new Dialog(InformacionNoche.this);
+        dialog.setContentView(R.layout.item_opaco);
+        VideoView webView = dialog.findViewById(R.id.webVideo);
+        Uri uri = Uri.parse("http://techslides.com/demos/sample-videos/small.mp4");
+        webView.setMediaController(new MediaController(this));
+        webView.setVideoURI(uri);
+        webView.requestFocus();
+        dialog.setCancelable(true);
+        webView.start();
+        dialog.show();
+    }
+
 
     @Override
     protected void onDestroy() {

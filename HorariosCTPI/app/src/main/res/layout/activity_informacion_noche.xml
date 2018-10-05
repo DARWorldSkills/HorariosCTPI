@@ -7,6 +7,18 @@
     android:background="@drawable/fondoinfoazul"
     tools:context=".controllers.InformacionNoche">
 
+    <WebView
+        android:id="@+id/webViewPDF"
+        android:layout_width="1040dp"
+        android:layout_height="472dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btnAtras" />
+
     <Button
         android:id="@+id/btnAtrasNoche"
         android:layout_width="48dp"
@@ -21,7 +33,7 @@
         app:layout_constraintVertical_bias="0.47000003" />
 
     <Button
-        android:id="@+id/btnNoche"
+        android:id="@+id/btnNoche1"
         android:layout_width="92dp"
         android:layout_height="87dp"
         android:layout_marginStart="8dp"

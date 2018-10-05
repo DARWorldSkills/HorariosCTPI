@@ -69,6 +69,9 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     public static Iconos iconosM = new Iconos();
     public static Iconos iconosT = new Iconos();
     public static Iconos iconosN = new Iconos();
+    public static Programa programaM = new Programa();
+    public static Programa programaT = new Programa();
+    public static Programa programaN = new Programa();
 
 
 
@@ -204,8 +207,8 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
                 GenericTypeIndicator<ArrayList<Horario>> t = new GenericTypeIndicator<ArrayList<Horario>>(){};
                 horarioList = dataSnapshot.getValue(t);
                 ficha[0] = horarioList.get(0).getFicha();
-                ficha[1] = horarioList.get(2).getFicha();
-                ficha[2] = horarioList.get(4).getFicha();
+                ficha[1] = horarioList.get(3).getFicha();
+                ficha[2] = horarioList.get(6).getFicha();
                 obtenerFicha();
 
 
@@ -273,14 +276,18 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
                 for (int i=0; i<programaList.size();i++){
                     if (programaList.get(i).getNombre().equals(programa[0])) {
                         iconos[0] = programaList.get(i).getIcono();
+                        programaM = programaList.get(i);
+
                     }
 
                     if (programaList.get(i).getNombre().equals(programa[1])) {
                         iconos[1] = programaList.get(i).getIcono();
+                        programaT = programaList.get(i);
                     }
 
                     if (programaList.get(i).getNombre().equals(programa[2])) {
                         iconos[2] = programaList.get(i).getIcono();
+                        programaN = programaList.get(i);
 
                     }
 

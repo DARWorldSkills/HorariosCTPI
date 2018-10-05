@@ -8,6 +8,22 @@
     tools:context=".controllers.HorarioTarde">
 
 
+    <TextView
+        android:id="@+id/txtComentarios2"
+        android:layout_width="663dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="52dp"
+        android:maxLines="2"
+        android:textColor="@color/naranja"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.445"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="944dp"

@@ -21,7 +21,7 @@ import java.util.List;
 
 public class HorarioTarde extends AppCompatActivity {
     RecyclerView recyclerView;
-    TextView txtInstructorLider, txtPrograma,txtInformacionPrograma,txtFicha;
+    TextView txtInstructorLider, txtPrograma,txtInformacionPrograma,txtFicha, txtComentarios;
     Button btnAtras;
     ImageView imgTarde;
     Boolean bandera;
@@ -41,6 +41,7 @@ public class HorarioTarde extends AppCompatActivity {
         txtPrograma = findViewById(R.id.txtNombreProgramaTarde);
         txtInstructorLider = findViewById(R.id.txtInstructorTarde);
         txtFicha = findViewById(R.id.txtFichaTarde);
+        txtComentarios = findViewById(R.id.txtComentarios2);
         recyclerView = findViewById(R.id.recyclerViewTarde);
         btnAtras = findViewById(R.id.btnAtrasTarde);
         imgTarde = findViewById(R.id.imgTarde);
@@ -97,6 +98,7 @@ public class HorarioTarde extends AppCompatActivity {
             recyclerView.setAdapter(adapterHorarios);
             recyclerView.setLayoutManager(new LinearLayoutManager(HorarioTarde.this,LinearLayoutManager.VERTICAL,false));
             recyclerView.setHasFixedSize(true);
+            txtComentarios.setText(horarioList.get(0).getComentarios());
             try {
                 Glide.with(HorarioTarde.this).load(MenuPrincipal.iconosT.getNaranja()).crossFade().into(imgTarde);
 

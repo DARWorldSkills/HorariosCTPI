@@ -114,7 +114,7 @@ public class InformacionManana extends AppCompatActivity {
         });
 
         //Url Ejemplo:
-        String pdf = "https://drive.google.com/file/d/1Xw14bcieRabwfEkMu1DadEyEfmKB1vzb/view";
+        String pdf = MenuPrincipal.programaM.getDescripcion();
         webView.getSettings().setJavaScriptEnabled(true);
         //Carga url de .PDF en WebView  mediante Google Drive Viewer.
         webView.loadUrl(pdf);
