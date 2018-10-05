@@ -21,4 +21,10 @@
     <string name="instructorlider">Instructor Líder</string>
     <string name="ficha">Ficha:</string>
 
+    <string name="lunes">Lunes</string>
+    <string name="martes">Martes</string>
+    <string name="miercoles">Miercoles</string>
+    <string name="jueves">Jueves</string>
+    <string name="viernes">Viernes</string>
+
 </resources>

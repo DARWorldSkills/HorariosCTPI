@@ -9,6 +9,7 @@ public class Horario {
     private String jueves;
     private String viernes;
     private String sabado;
+    private String comentarios;
 
     public String getFicha() {
         return ficha;
@@ -72,5 +73,13 @@ public class Horario {
 
     public void setSabado(String sabado) {
         this.sabado = sabado;
+    }
+
+    public String getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(String comentarios) {
+        this.comentarios = comentarios;
     }
 }

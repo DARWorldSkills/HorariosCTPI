@@ -6,7 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<<<<<<< HEAD
     <VideoView
+=======
+    <WebView
+>>>>>>> 6328be91f6d2160bcb289dec7d9b479175fdbc3e
         android:layout_width="1200dp"
         android:layout_height="680dp"
         android:layout_marginStart="8dp"
