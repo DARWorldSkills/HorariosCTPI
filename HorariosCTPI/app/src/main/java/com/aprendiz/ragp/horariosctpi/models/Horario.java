@@ -10,6 +10,7 @@ public class Horario {
     private String viernes;
     private String sabado;
     private String comentarios;
+    private String abreviaciones;
 
     public String getFicha() {
         return ficha;
@@ -81,5 +82,13 @@ public class Horario {
 
     public void setComentarios(String comentarios) {
         this.comentarios = comentarios;
+    }
+
+    public String getAbreviaciones() {
+        return abreviaciones;
+    }
+
+    public void setAbreviaciones(String abreviaciones) {
+        this.abreviaciones = abreviaciones;
     }
 }
