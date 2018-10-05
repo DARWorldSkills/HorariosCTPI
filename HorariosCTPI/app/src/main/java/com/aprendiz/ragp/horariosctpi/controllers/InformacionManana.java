@@ -115,9 +115,9 @@ public class InformacionManana extends AppCompatActivity {
 
         //Url Ejemplo:
         String pdf = "https://drive.google.com/file/d/1Xw14bcieRabwfEkMu1DadEyEfmKB1vzb/view";
-
+        webView.getSettings().setJavaScriptEnabled(true);
         //Carga url de .PDF en WebView  mediante Google Drive Viewer.
-        webView.loadUrl("http://www.comercial.usm.cl/wp-content/uploads/2015/10/vica.com_.mx_Promociones_assets_promocion2.pdf");
+        webView.loadUrl(pdf);
 
 
     }
