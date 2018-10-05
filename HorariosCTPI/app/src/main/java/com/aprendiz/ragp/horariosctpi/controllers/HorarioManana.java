@@ -22,7 +22,7 @@ import java.util.List;
 
 public class HorarioManana extends AppCompatActivity {
     RecyclerView recyclerView;
-    TextView txtInstructorLider, txtPrograma,txtInformacionPrograma,txtFicha;
+    TextView txtInstructorLider, txtPrograma,txtInformacionPrograma,txtFicha, txtComentarios;
     Boolean bandera;
     Button btnAtras;
     ImageView imgManana;
@@ -41,6 +41,7 @@ public class HorarioManana extends AppCompatActivity {
         txtPrograma = findViewById(R.id.txtNombreTecnologo);
         txtInstructorLider = findViewById(R.id.txtInstructorManana);
         txtFicha = findViewById(R.id.txtFichaManana);
+        txtComentarios = findViewById(R.id.txtComentarios);
         recyclerView = findViewById(R.id.recyclerViewManana);
         btnAtras = findViewById(R.id.btnAtrasManana);
         imgManana = findViewById(R.id.imgManana);
@@ -92,11 +93,12 @@ public class HorarioManana extends AppCompatActivity {
         txtPrograma.setText(nombrePrograma);
         txtFicha.setText(ficha);
         try {
-            List<Horario> horarioList = MenuPrincipal.horarioList.subList(0,2);
+            List<Horario> horarioList = MenuPrincipal.horarioList.subList(0,3);
             AdapterHorarios adapterHorarios = new AdapterHorarios(horarioList,this,getResources().getColor(R.color.verde));
             recyclerView.setAdapter(adapterHorarios);
             recyclerView.setLayoutManager(new LinearLayoutManager(HorarioManana.this,LinearLayoutManager.VERTICAL,false));
             recyclerView.setHasFixedSize(true);
+            txtComentarios.setText(horarioList.get(0).getComentarios());
             try {
                 Glide.with(HorarioManana.this).load(MenuPrincipal.iconosM.getVerde()).crossFade().into(imgManana);
 

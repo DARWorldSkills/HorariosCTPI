@@ -135,17 +135,17 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerViewManana"
-        android:layout_width="911dp"
+        android:layout_width="790dp"
         android:layout_height="167dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.73"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.67" />
+        app:layout_constraintVertical_bias="0.677" />
 
     <TextView
         android:id="@+id/textView15"
@@ -164,7 +164,7 @@
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="75dp"
+        android:layout_marginStart="79dp"
         android:layout_marginBottom="8dp"
         android:text="@string/martes"
         android:textColor="#fff"
@@ -256,11 +256,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="270dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="18dp"
         android:text="11 - 13"
         android:textColor="@color/verde"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+    <TextView
+        android:id="@+id/txtComentarios"
+        android:layout_width="663dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="52dp"
+        android:maxLines="2"
+        android:text="TextView"
+        android:textColor="@color/verde"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.445"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

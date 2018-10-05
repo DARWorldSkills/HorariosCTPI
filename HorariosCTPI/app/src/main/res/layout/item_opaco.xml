@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <WebView
+    <VideoView
+        android:id="@+id/webVideo"
         android:layout_width="1200dp"
         android:layout_height="680dp"
         android:layout_marginStart="8dp"
