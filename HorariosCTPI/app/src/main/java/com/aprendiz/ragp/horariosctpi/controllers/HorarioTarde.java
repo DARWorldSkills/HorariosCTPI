@@ -17,6 +17,7 @@ import com.aprendiz.ragp.horariosctpi.models.AdapterHorarios;
 import com.aprendiz.ragp.horariosctpi.models.Horario;
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HorarioTarde extends AppCompatActivity {
@@ -25,6 +26,7 @@ public class HorarioTarde extends AppCompatActivity {
     Button btnAtras;
     ImageView imgTarde;
     Boolean bandera;
+    List<Horario> horarioList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,12 +95,13 @@ public class HorarioTarde extends AppCompatActivity {
         txtPrograma.setText(nombrePrograma);
         txtFicha.setText(ficha);
         try {
-            List<Horario> horarioList = MenuPrincipal.horarioList.subList(3,6);
+            horarioList = MenuPrincipal.horarioList.subList(3,6);
             AdapterHorarios adapterHorarios = new AdapterHorarios(horarioList,this,getResources().getColor(R.color.naranja));
             recyclerView.setAdapter(adapterHorarios);
             recyclerView.setLayoutManager(new LinearLayoutManager(HorarioTarde.this,LinearLayoutManager.VERTICAL,false));
             recyclerView.setHasFixedSize(true);
             txtComentarios.setText(horarioList.get(0).getComentarios());
+            inputAbreviacion();
             try {
                 Glide.with(HorarioTarde.this).load(MenuPrincipal.iconosT.getNaranja()).crossFade().into(imgTarde);
 
@@ -112,9 +115,17 @@ public class HorarioTarde extends AppCompatActivity {
 
     }
 
+    public void inputAbreviacion(){
+        String[] tmp =horarioList.get(0).getAbreviaciones().split(";");
+
+
+    }
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         bandera=false;
     }
 }
+

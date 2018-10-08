@@ -18,15 +18,18 @@ import com.aprendiz.ragp.horariosctpi.models.AdapterHorarios;
 import com.aprendiz.ragp.horariosctpi.models.Horario;
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HorarioManana extends AppCompatActivity {
     RecyclerView recyclerView;
-    TextView txtInstructorLider, txtPrograma,txtInformacionPrograma,txtFicha,txtComentarios;
+    TextView txtInstructorLider, txtPrograma,txtInformacionPrograma,txtFicha,txtComentarios, txtInstructor1;
     Boolean bandera;
     Button btnAtras;
     ImageView imgManana;
-    String abreviaciones;
+    String abreviaciones="";
+    List<Horario> horarioList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,7 @@ public class HorarioManana extends AppCompatActivity {
         txtInstructorLider = findViewById(R.id.txtInstructorManana);
         txtFicha = findViewById(R.id.txtFichaManana);
         txtComentarios = findViewById(R.id.txtComentarios);
+        txtInstructor1 = findViewById(R.id.txtInstructor1);
         recyclerView = findViewById(R.id.recyclerViewManana);
         btnAtras = findViewById(R.id.btnAtrasManana);
         imgManana = findViewById(R.id.imgManana);
@@ -94,12 +98,13 @@ public class HorarioManana extends AppCompatActivity {
         txtPrograma.setText(nombrePrograma);
         txtFicha.setText(ficha);
         try {
-            List<Horario> horarioList = MenuPrincipal.horarioList.subList(0,3);
+            horarioList = MenuPrincipal.horarioList.subList(0,3);
             AdapterHorarios adapterHorarios = new AdapterHorarios(horarioList,this,getResources().getColor(R.color.verde));
             recyclerView.setAdapter(adapterHorarios);
             recyclerView.setLayoutManager(new LinearLayoutManager(HorarioManana.this,LinearLayoutManager.VERTICAL,false));
             recyclerView.setHasFixedSize(true);
             txtComentarios.setText(horarioList.get(0).getComentarios());
+            inputAbreviacion();
             try {
                 Glide.with(HorarioManana.this).load(MenuPrincipal.iconosM.getVerde()).crossFade().into(imgManana);
 
@@ -111,6 +116,12 @@ public class HorarioManana extends AppCompatActivity {
         }
     }
 
+    public void inputAbreviacion(){
+        String[] tmp =horarioList.get(0).getAbreviaciones().split(";");
+
+        txtInstructor1.setText(tmp[0]);
+
+    }
 
 
     @Override
