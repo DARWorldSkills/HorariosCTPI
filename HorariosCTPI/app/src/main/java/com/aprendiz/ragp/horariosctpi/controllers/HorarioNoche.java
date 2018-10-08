@@ -24,6 +24,7 @@ public class HorarioNoche extends AppCompatActivity {
 
     RecyclerView recyclerView;
     TextView txtInstructorLider, txtPrograma,txtInformacionPrograma,txtFicha,txtProfeSbado, txtComentarios;
+    TextView txtInstructor1, txtInstructor2, txtInstructor3, txtInstructor4, txtInstructor5, txtInstructor6;
     Boolean bandera;
     ImageView imgNoche;
     Button btnAtras;
@@ -45,6 +46,11 @@ public class HorarioNoche extends AppCompatActivity {
         txtFicha = findViewById(R.id.txtFichaNoche);
         txtProfeSbado = findViewById(R.id.txtProfeSbado);
         txtComentarios = findViewById(R.id.txtComentarios3);
+        txtInstructor1 = findViewById(R.id.txtInstructore1);
+        txtInstructor2 = findViewById(R.id.txtInstructor2);
+        txtInstructor3 = findViewById(R.id.txtInstructor3);
+        txtInstructor4 = findViewById(R.id.txtInstructor4);
+        txtInstructor5 = findViewById(R.id.txtInstructor5);
         recyclerView = findViewById(R.id.recyclerViewNoche);
         imgNoche = findViewById(R.id.imgNoche);
         btnAtras = findViewById(R.id.btnAtrasNoche);
@@ -121,6 +127,11 @@ public class HorarioNoche extends AppCompatActivity {
     public void inputAbreviacion(){
         String[] tmp =horarioList.get(0).getAbreviaciones().split(";");
 
+        txtInstructor1.setText(tmp[0]);
+        txtInstructor2.setText(tmp[1]);
+        txtInstructor3.setText(tmp[2]);
+        txtInstructor4.setText(tmp[3]);
+        txtInstructor5.setText(tmp[4]);
 
     }
 

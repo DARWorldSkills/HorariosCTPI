@@ -24,6 +24,7 @@ import java.util.List;
 public class HorarioManana extends AppCompatActivity {
     RecyclerView recyclerView;
     TextView txtInstructorLider, txtPrograma,txtInformacionPrograma,txtFicha,txtComentarios, txtInstructor1;
+    TextView txtInstructor2, txtInstructor3, txtInstructor4, txtInstructor5, txtInstructor6;
     Boolean bandera;
     Button btnAtras;
     ImageView imgManana;
@@ -47,6 +48,11 @@ public class HorarioManana extends AppCompatActivity {
         txtFicha = findViewById(R.id.txtFichaManana);
         txtComentarios = findViewById(R.id.txtComentarios);
         txtInstructor1 = findViewById(R.id.txtInstructor1);
+        txtInstructor2 = findViewById(R.id.txtInstructor2);
+        txtInstructor3 = findViewById(R.id.txtInstructor3);
+        txtInstructor4 = findViewById(R.id.txtIntructor4);
+        txtInstructor5 = findViewById(R.id.txtInstructor5);
+        txtInstructor6 = findViewById(R.id.txtInstructor6);
         recyclerView = findViewById(R.id.recyclerViewManana);
         btnAtras = findViewById(R.id.btnAtrasManana);
         imgManana = findViewById(R.id.imgManana);
@@ -120,6 +126,11 @@ public class HorarioManana extends AppCompatActivity {
         String[] tmp =horarioList.get(0).getAbreviaciones().split(";");
 
         txtInstructor1.setText(tmp[0]);
+        txtInstructor2.setText(tmp[1]);
+        txtInstructor3.setText(tmp[2]);
+        txtInstructor4.setText(tmp[3]);
+        txtInstructor5.setText(tmp[4]);
+        txtInstructor6.setText(tmp[5]);
 
     }
 

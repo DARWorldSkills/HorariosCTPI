@@ -23,6 +23,7 @@ import java.util.List;
 public class HorarioTarde extends AppCompatActivity {
     RecyclerView recyclerView;
     TextView txtInstructorLider, txtPrograma,txtInformacionPrograma,txtFicha, txtComentarios;
+    TextView txtInstructor1, txtInstructor2, txtInstructor3, txtInstructor4, txtInstructor5, txtInstructor6;
     Button btnAtras;
     ImageView imgTarde;
     Boolean bandera;
@@ -44,6 +45,11 @@ public class HorarioTarde extends AppCompatActivity {
         txtInstructorLider = findViewById(R.id.txtInstructorTarde);
         txtFicha = findViewById(R.id.txtFichaTarde);
         txtComentarios = findViewById(R.id.txtComentarios2);
+        txtInstructor1 = findViewById(R.id.txtInstrucor1);
+        txtInstructor2 = findViewById(R.id.txtInstructor2);
+        txtInstructor3 = findViewById(R.id.txtInstructores3);
+        txtInstructor4 = findViewById(R.id.txtInstructor4);
+        txtInstructor5 = findViewById(R.id.txtInstructor5);
         recyclerView = findViewById(R.id.recyclerViewTarde);
         btnAtras = findViewById(R.id.btnAtrasTarde);
         imgTarde = findViewById(R.id.imgTarde);
@@ -118,7 +124,11 @@ public class HorarioTarde extends AppCompatActivity {
     public void inputAbreviacion(){
         String[] tmp =horarioList.get(0).getAbreviaciones().split(";");
 
-
+        txtInstructor1.setText(tmp[0]);
+        txtInstructor2.setText(tmp[1]);
+        txtInstructor3.setText(tmp[2]);
+        txtInstructor4.setText(tmp[3]);
+        txtInstructor5.setText(tmp[4]);
     }
 
 
