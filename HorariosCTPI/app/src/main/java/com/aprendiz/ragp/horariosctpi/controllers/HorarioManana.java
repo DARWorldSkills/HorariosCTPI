@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aprendiz.ragp.horariosctpi.MenuPrincipal;
 import com.aprendiz.ragp.horariosctpi.R;
@@ -48,7 +49,7 @@ public class HorarioManana extends AppCompatActivity {
         txtFicha = findViewById(R.id.txtFichaManana);
         txtComentarios = findViewById(R.id.txtComentarios);
         txtInstructor1 = findViewById(R.id.txtInstructor1);
-        txtInstructor2 = findViewById(R.id.txtInstructor2);
+        txtInstructor2 = findViewById(R.id.txtInstrictor2);
         txtInstructor3 = findViewById(R.id.txtInstructor3);
         txtInstructor4 = findViewById(R.id.txtIntructor4);
         txtInstructor5 = findViewById(R.id.txtInstructor5);
@@ -56,6 +57,7 @@ public class HorarioManana extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewManana);
         btnAtras = findViewById(R.id.btnAtrasManana);
         imgManana = findViewById(R.id.imgManana);
+
     }
 
     private void inputValues(){
@@ -103,6 +105,7 @@ public class HorarioManana extends AppCompatActivity {
         txtInstructorLider.setText(instructor);
         txtPrograma.setText(nombrePrograma);
         txtFicha.setText(ficha);
+
         try {
             horarioList = MenuPrincipal.horarioList.subList(0,3);
             AdapterHorarios adapterHorarios = new AdapterHorarios(horarioList,this,getResources().getColor(R.color.verde));
