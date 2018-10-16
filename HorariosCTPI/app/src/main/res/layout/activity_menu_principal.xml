@@ -35,29 +35,31 @@
 
     <ImageView
         android:id="@+id/btnManana"
-        android:layout_width="190dp"
+        android:layout_width="263dp"
         android:layout_height="190dp"
-        android:layout_marginStart="125dp"
+        android:layout_marginStart="96dp"
         android:layout_marginTop="48dp"
-        android:scaleType="centerInside"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAmbiente" />
 
     <ImageView
         android:id="@+id/btnTarde"
-        android:layout_width="190dp"
+        android:layout_width="263dp"
         android:layout_height="190dp"
-        android:layout_marginStart="92dp"
+        android:layout_marginStart="20dp"
+        android:scaleType="centerCrop"
         android:layout_marginTop="48dp"
         app:layout_constraintStart_toEndOf="@+id/btnManana"
         app:layout_constraintTop_toBottomOf="@+id/txtAmbiente" />
 
     <ImageView
         android:id="@+id/btnNoche"
-        android:layout_width="190dp"
+        android:layout_width="263dp"
         android:layout_height="190dp"
-        android:layout_marginStart="92dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="48dp"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toEndOf="@+id/btnTarde"
         app:layout_constraintTop_toBottomOf="@+id/txtAmbiente" />
 
@@ -174,7 +176,7 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="175dp"
+        android:layout_marginStart="178dp"
         android:text="@string/horatarde"
         android:textColor="@color/naranja"
         android:textSize="20sp"
