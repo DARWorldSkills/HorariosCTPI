@@ -110,7 +110,11 @@ public class HorarioNoche extends AppCompatActivity {
             recyclerView.setLayoutManager(new LinearLayoutManager(HorarioNoche.this,LinearLayoutManager.VERTICAL,false));
             recyclerView.setHasFixedSize(true);
             txtProfeSbado.setText(horarioList.get(0).getSabado());
-            txtComentarios.setText(horarioList.get(0).getComentarios());
+            if(horarioList.get(0).getComentarios().length()<1){
+                txtComentarios.setText("No hay comentarios");
+            }else {
+                txtComentarios.setText(horarioList.get(0).getComentarios());
+            }
             inputAbreviacion();
             try {
                 Glide.with(HorarioNoche.this).load(MenuPrincipal.iconosN.getAzul()).crossFade().into(imgNoche);

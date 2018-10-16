@@ -18,20 +18,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controllers.HorarioManana"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".controllers.HorarioTarde" android:screenOrientation="landscape"/>
-        <activity android:name=".controllers.HorarioNoche" android:screenOrientation="landscape"/>
+        <activity
+            android:name=".controllers.HorarioManana"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".controllers.HorarioTarde"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".controllers.HorarioNoche"
+            android:screenOrientation="landscape" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".controllers.IniciarSesion" android:screenOrientation="landscape"/>
-        <activity android:name=".controllers.ControlarHorario" android:screenOrientation="landscape"/>
-        <activity android:name=".controllers.InformacionManana" android:screenOrientation="landscape"/>
-        <activity android:name=".controllers.InformacionTarde" android:screenOrientation="landscape"/>
-        <activity android:name=".controllers.InformacionNoche" android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".controllers.IniciarSesion"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".controllers.ControlarHorario"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".controllers.InformacionManana"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".controllers.InformacionTarde"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".controllers.InformacionNoche"
+            android:screenOrientation="landscape" />
+        <activity android:name=".controllers.CapsulasInfo"></activity>
     </application>
 
 </manifest>
