@@ -112,7 +112,12 @@ public class HorarioManana extends AppCompatActivity {
             recyclerView.setAdapter(adapterHorarios);
             recyclerView.setLayoutManager(new LinearLayoutManager(HorarioManana.this,LinearLayoutManager.VERTICAL,false));
             recyclerView.setHasFixedSize(true);
-            txtComentarios.setText(horarioList.get(0).getComentarios());
+
+            if(horarioList.get(0).getComentarios().length()<1){
+                txtComentarios.setText("No hay comentarios");
+            }else {
+                txtComentarios.setText(horarioList.get(0).getComentarios());
+            }
             inputAbreviacion();
             try {
                 Glide.with(HorarioManana.this).load(MenuPrincipal.iconosM.getVerde()).crossFade().into(imgManana);
