@@ -2,7 +2,10 @@ package com.aprendiz.ragp.horariosctpi.controllers;
 
 import android.app.Dialog;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +22,8 @@ import android.widget.VideoView;
 import com.aprendiz.ragp.horariosctpi.MenuPrincipal;
 import com.aprendiz.ragp.horariosctpi.R;
 import com.bumptech.glide.Glide;
+
+import java.io.File;
 
 public class InformacionNoche extends AppCompatActivity {
     TextView txtPrograma;
@@ -121,12 +126,15 @@ public class InformacionNoche extends AppCompatActivity {
     }
 
     private void watchVideo(){
+        File exportDir = new File(Environment.getExternalStorageDirectory(),"Videos");
         Dialog dialog = new Dialog(InformacionNoche.this);
         dialog.setContentView(R.layout.item_opaco);
         VideoView webView = dialog.findViewById(R.id.webVideo);
-        Uri uri = Uri.parse("http://techslides.com/demos/sample-videos/small.mp4");
+        Uri uri = Uri.fromFile(new File(exportDir,"capsula1.mp4"));
         webView.setMediaController(new MediaController(this));
         webView.setVideoURI(uri);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
         webView.requestFocus();
         dialog.setCancelable(true);
         webView.start();

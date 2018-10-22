@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aprendiz.ragp.horariosctpi.controllers.CapsulasInfo;
 import com.aprendiz.ragp.horariosctpi.controllers.HorarioManana;
 import com.aprendiz.ragp.horariosctpi.controllers.HorarioNoche;
 import com.aprendiz.ragp.horariosctpi.controllers.HorarioTarde;
@@ -47,7 +48,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     ImageView btnManana, btnTarde, btnNoche, imvLogo;
     TextView txtAmbiente, txtNumeroAmbiente,txtReloj, txtHora, txtManana,txtTarde, txtNoche, txtArea;
     Thread reloj;
-    Button btnLogin;
+    Button btnLogin,btnCapsulas;
 
     public static List<Ambiente> ambienteList = new ArrayList<>();
     public static List<Horario> horarioList = new ArrayList<>();
@@ -83,7 +84,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
+        try {FirebaseDatabase.getInstance().setPersistenceEnabled(true);}catch (Exception e){}
         fa = this;
         preferences = getSharedPreferences("horarios",MODE_PRIVATE);
         inizialite();
@@ -132,6 +133,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
         btnManana = findViewById(R.id.btnManana);
         btnTarde = findViewById(R.id.btnTarde);
         btnNoche = findViewById(R.id.btnNoche);
+        btnCapsulas = findViewById(R.id.btnCapsulas);
         imvLogo = findViewById(R.id.imvLogo);
         btnLogin = findViewById(R.id.btnLogin);
         txtReloj = findViewById(R.id.txtReloj);
@@ -140,6 +142,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
         btnTarde.setOnClickListener(this);
         btnNoche.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
+        btnCapsulas.setOnClickListener(this);
     }
 
     private void obtenerAmbiente(){
@@ -404,6 +407,11 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
 
             case R.id.btnNoche:
                 intent = new Intent(MenuPrincipal.this,HorarioNoche.class);
+                startActivity(intent);
+                break;
+
+            case R.id.btnCapsulas:
+                intent = new Intent(MenuPrincipal.this,CapsulasInfo.class);
                 startActivity(intent);
                 break;
 

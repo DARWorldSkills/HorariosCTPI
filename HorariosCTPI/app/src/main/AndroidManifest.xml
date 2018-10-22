@@ -47,7 +47,7 @@
         <activity
             android:name=".controllers.InformacionNoche"
             android:screenOrientation="landscape" />
-        <activity android:name=".controllers.CapsulasInfo"></activity>
+        <activity android:name=".controllers.CapsulasInfo" android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>
