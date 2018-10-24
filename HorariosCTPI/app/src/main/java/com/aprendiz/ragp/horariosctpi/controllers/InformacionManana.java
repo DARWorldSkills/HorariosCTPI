@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Environment;
+import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +22,7 @@ import android.widget.VideoView;
 
 import com.aprendiz.ragp.horariosctpi.MenuPrincipal;
 import com.aprendiz.ragp.horariosctpi.R;
+import com.aprendiz.ragp.horariosctpi.fragments.VideoFragment;
 import com.bumptech.glide.Glide;
 
 import java.io.File;
@@ -29,14 +32,26 @@ public class InformacionManana extends AppCompatActivity {
     TextView txtPrograma;
     Button btnAtras, btnManana;
     boolean bandera;
+    Button btnCerrar;
+    VideoFragment videoFragment;
+    ConstraintLayout contenedor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_informacion_manana);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        videoFragment=new VideoFragment();
+        MenuPrincipal.informacionManana=this;
         bandera = true;
         iniziliate();
         inputValues();
+        btnCerrar.setVisibility(View.INVISIBLE);
+        btnCerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cerrarVideo();
+            }
+        });
     }
 
     private void iniziliate() {
@@ -44,6 +59,8 @@ public class InformacionManana extends AppCompatActivity {
         txtPrograma = findViewById(R.id.txtNombrePrograma);
         btnAtras = findViewById(R.id.btnAtras);
         btnManana = findViewById(R.id.btnManana);
+        btnCerrar = findViewById(R.id.btnCerrar);
+        contenedor = findViewById(R.id.contenedorV);
     }
 
     private void inputValues() {
@@ -94,10 +111,6 @@ public class InformacionManana extends AppCompatActivity {
         }
 
 
-
-
-
-
     }
 
     private void insertarPDF(){
@@ -127,21 +140,16 @@ public class InformacionManana extends AppCompatActivity {
 
     }
 
+    public void cerrarVideo() {
+        btnCerrar.setVisibility(View.INVISIBLE);
+        getSupportFragmentManager().beginTransaction().remove(videoFragment).commit();
+        contenedor.setBackgroundColor(Color.TRANSPARENT);
+    }
+
     private void watchVideo(){
-        File exportDir = new File(Environment.getExternalStorageDirectory(),"Videos");
-        Dialog dialog = new Dialog(InformacionManana.this);
-        dialog.setContentView(R.layout.item_opaco);
-        VideoView webView = dialog.findViewById(R.id.webVideo);
-        Uri uri = Uri.fromFile(new File(exportDir,"capsula1.mp4"));
-        webView.setMediaController(new MediaController(this));
-        webView.setVideoURI(uri);
-        webView.requestFocus();
-        dialog.setCancelable(true);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        webView.start();
-        dialog.show();
-
-
+        contenedor.setBackgroundColor(getResources().getColor(R.color.trasnsparencia));
+        getSupportFragmentManager().beginTransaction().replace(R.id.contenedorV,videoFragment).commit();
+        btnCerrar.setVisibility(View.VISIBLE);
 
     }
 

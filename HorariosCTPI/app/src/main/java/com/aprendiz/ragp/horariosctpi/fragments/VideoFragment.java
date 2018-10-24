@@ -1,6 +1,7 @@
 package com.aprendiz.ragp.horariosctpi.fragments;
 
 
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -46,26 +47,32 @@ public class VideoFragment extends Fragment {
         Uri uri = Uri.fromFile(new File(exportDir,"capsula1.mp4"));
         if (MenuPrincipal.programaNecesario.getVideo().equals("1")) {
             uri = Uri.fromFile(new File(exportDir, "capsula1.mp4"));
+            Log.e("Video 1","asd");
         }
 
         if (MenuPrincipal.programaNecesario.getVideo().equals("2")){
-            uri = Uri.fromFile(new File(exportDir, "Cuaadrado TEA.mp4"));
+            uri = Uri.fromFile(new File(exportDir, "Cuadrado TEA.mp4"));
+            Log.e("Video 2","asd2");
         }
 
         if (MenuPrincipal.programaNecesario.getVideo().equals("3")){
             uri = Uri.fromFile(new File(exportDir, "Cuadrado Vj.mp4"));
+            Log.e("Video 3","asd3");
         }
 
         if (MenuPrincipal.programaNecesario.getVideo().equals("4")){
             uri = Uri.fromFile(new File(exportDir, "Cuadrado AD.mp4"));
+            Log.e("Video 4","asd4");
         }
 
         if (MenuPrincipal.programaNecesario.getVideo().equals("5")){
             uri = Uri.fromFile(new File(exportDir, "Cuadrado IL.mp4"));
+            Log.e("Video 5","asd5");
         }
 
         if (MenuPrincipal.programaNecesario.getVideo().equals("6")){
             uri = Uri.fromFile(new File(exportDir, "Cuadrado Mm.mp4"));
+            Log.e("Video 6","asd6");
         }
 
         inputVideos(uri);
@@ -86,6 +93,26 @@ public class VideoFragment extends Fragment {
             Log.e("Error", e.getMessage());
             Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
         }
+
+        videoReal.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                switch (MenuPrincipal.nPrograma){
+                    case 1:
+                        MenuPrincipal.informacionManana.cerrarVideo();
+                        break;
+
+                    case 2:
+                        MenuPrincipal.informacionTarde.cerrarVideo();
+                        break;
+
+                    case 3:
+                        MenuPrincipal.informacionNoche.cerrarVideo();
+                        break;
+                }
+
+            }
+        });
 
 
 

@@ -21,6 +21,9 @@ import com.aprendiz.ragp.horariosctpi.controllers.CapsulasInfo;
 import com.aprendiz.ragp.horariosctpi.controllers.HorarioManana;
 import com.aprendiz.ragp.horariosctpi.controllers.HorarioNoche;
 import com.aprendiz.ragp.horariosctpi.controllers.HorarioTarde;
+import com.aprendiz.ragp.horariosctpi.controllers.InformacionManana;
+import com.aprendiz.ragp.horariosctpi.controllers.InformacionNoche;
+import com.aprendiz.ragp.horariosctpi.controllers.InformacionTarde;
 import com.aprendiz.ragp.horariosctpi.controllers.IniciarSesion;
 import com.aprendiz.ragp.horariosctpi.models.Ambiente;
 import com.aprendiz.ragp.horariosctpi.models.Ficha;
@@ -76,6 +79,11 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     public static Programa programaT = new Programa();
     public static Programa programaN = new Programa();
     public static Programa programaNecesario = new Programa();
+    public static int nPrograma=0;
+
+    public static InformacionManana informacionManana;
+    public static InformacionTarde informacionTarde;
+    public static InformacionNoche informacionNoche;
 
 
     @Override
@@ -398,18 +406,21 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
             case R.id.btnManana:
                 intent = new Intent(MenuPrincipal.this,HorarioManana.class);
                 programaNecesario = programaM;
+                nPrograma=1;
                 startActivity(intent);
                 break;
 
             case R.id.btnTarde:
                 intent = new Intent(MenuPrincipal.this,HorarioTarde.class);
                 programaNecesario = programaT;
+                nPrograma=2;
                 startActivity(intent);
                 break;
 
             case R.id.btnNoche:
                 intent = new Intent(MenuPrincipal.this,HorarioNoche.class);
                 programaNecesario = programaN;
+                nPrograma=3;
                 startActivity(intent);
                 break;
 

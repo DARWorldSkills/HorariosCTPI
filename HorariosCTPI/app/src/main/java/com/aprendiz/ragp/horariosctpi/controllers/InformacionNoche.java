@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Environment;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +22,7 @@ import android.widget.VideoView;
 
 import com.aprendiz.ragp.horariosctpi.MenuPrincipal;
 import com.aprendiz.ragp.horariosctpi.R;
+import com.aprendiz.ragp.horariosctpi.fragments.VideoFragment;
 import com.bumptech.glide.Glide;
 
 import java.io.File;
@@ -30,14 +32,26 @@ public class InformacionNoche extends AppCompatActivity {
     Button btnAtras, btnNoche;
     ImageView imgNoche;
     boolean bandera;
+    Button btnCerrar;
+    VideoFragment videoFragment;
+    ConstraintLayout contenedor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_informacion_noche);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        videoFragment=new VideoFragment();
+        MenuPrincipal.informacionNoche=this;
         bandera = true;
         inizialite();
         inputValues();
+        btnCerrar.setVisibility(View.INVISIBLE);
+        btnCerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cerrarVideo();
+            }
+        });
     }
 
     private void inizialite() {
@@ -45,6 +59,8 @@ public class InformacionNoche extends AppCompatActivity {
         btnAtras = findViewById(R.id.btnAtrasNoche);
         btnNoche = findViewById(R.id.btnNoche1);
         imgNoche = findViewById(R.id.imgVistaInfonoche);
+        btnCerrar = findViewById(R.id.btnCerrar);
+        contenedor = findViewById(R.id.contenedorV);
 
     }
 
@@ -126,19 +142,15 @@ public class InformacionNoche extends AppCompatActivity {
     }
 
     private void watchVideo(){
-        File exportDir = new File(Environment.getExternalStorageDirectory(),"Videos");
-        Dialog dialog = new Dialog(InformacionNoche.this);
-        dialog.setContentView(R.layout.item_opaco);
-        VideoView webView = dialog.findViewById(R.id.webVideo);
-        Uri uri = Uri.fromFile(new File(exportDir,"capsula1.mp4"));
-        webView.setMediaController(new MediaController(this));
-        webView.setVideoURI(uri);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        contenedor.setBackgroundColor(getResources().getColor(R.color.trasnsparencia));
+        getSupportFragmentManager().beginTransaction().replace(R.id.contenedorV,videoFragment).commit();
+        btnCerrar.setVisibility(View.VISIBLE);
+    }
 
-        webView.requestFocus();
-        dialog.setCancelable(true);
-        webView.start();
-        dialog.show();
+    public void cerrarVideo() {
+        btnCerrar.setVisibility(View.INVISIBLE);
+        getSupportFragmentManager().beginTransaction().remove(videoFragment).commit();
+        contenedor.setBackgroundColor(Color.TRANSPARENT);
     }
 
 
