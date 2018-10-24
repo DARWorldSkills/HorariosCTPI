@@ -66,7 +66,7 @@ public class CapsulasInfo extends AppCompatActivity {
     private void adapterRecycler(){
         AdapterVideos adapterVideos = new AdapterVideos(lista,this);
         recyclerView.setAdapter(adapterVideos);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         recyclerView.setHasFixedSize(true);
         adapterVideos.setMlistener(new AdapterVideos.OnItemClickListener() {
             @Override

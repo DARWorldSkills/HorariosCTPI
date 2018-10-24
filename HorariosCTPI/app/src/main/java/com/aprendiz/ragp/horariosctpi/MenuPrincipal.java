@@ -75,7 +75,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     public static Programa programaM = new Programa();
     public static Programa programaT = new Programa();
     public static Programa programaN = new Programa();
-
+    public static Programa programaNecesario = new Programa();
 
 
     @Override
@@ -397,16 +397,19 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
 
             case R.id.btnManana:
                 intent = new Intent(MenuPrincipal.this,HorarioManana.class);
+                programaNecesario = programaM;
                 startActivity(intent);
                 break;
 
             case R.id.btnTarde:
                 intent = new Intent(MenuPrincipal.this,HorarioTarde.class);
+                programaNecesario = programaT;
                 startActivity(intent);
                 break;
 
             case R.id.btnNoche:
                 intent = new Intent(MenuPrincipal.this,HorarioNoche.class);
+                programaNecesario = programaN;
                 startActivity(intent);
                 break;
 
