@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Adapter;
+import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -22,6 +24,7 @@ public class CapsulasInfo extends AppCompatActivity {
     RecyclerView recyclerView;
     VideoView videoView;
     String [] lista;
+    Button btnSalirCapsula;
     Uri uri;
     int i=0;
     @Override
@@ -31,12 +34,23 @@ public class CapsulasInfo extends AppCompatActivity {
         inizialite();
         inputList();
         adapterRecycler();
+        finalizar();
         inputVideos(lista[0]);
+    }
+
+    private void finalizar() {
+        btnSalirCapsula.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void inizialite() {
         recyclerView = findViewById(R.id.recyclerView);
         videoView = findViewById(R.id.videoView);
+        btnSalirCapsula = findViewById(R.id.btnSalirCapsulas);
     }
 
     public void inputList(){
