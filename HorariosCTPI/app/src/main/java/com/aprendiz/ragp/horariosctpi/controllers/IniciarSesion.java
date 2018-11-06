@@ -28,6 +28,7 @@ public class IniciarSesion extends AppCompatActivity {
 
     EditText txtNombre,txtClave;
     Button btnIniciarSesion;
+    Button btnBack;
     List<Usuario> usuarioList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class IniciarSesion extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         inizialite();
         consultar();
+        salir();
         btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,10 +46,20 @@ public class IniciarSesion extends AppCompatActivity {
         });
     }
 
+    private void salir() {
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
     private void inizialite() {
         txtNombre = findViewById(R.id.txtNombreIS);
         txtClave = findViewById(R.id.txtClaveIS);
         btnIniciarSesion = findViewById(R.id.btnIniciarSesion);
+        btnBack = findViewById(R.id.btnBack);
     }
 
     private void consultar() {
