@@ -51,9 +51,11 @@ public class HorarioTarde extends AppCompatActivity {
         txtInstructor3 = findViewById(R.id.txtInstructores3);
         txtInstructor4 = findViewById(R.id.txtInstructor4);
         txtInstructor5 = findViewById(R.id.txtInstructor5);
+        txtInstructor6 = findViewById(R.id.txtInstructor6);
         recyclerView = findViewById(R.id.recyclerViewTarde);
         btnAtras = findViewById(R.id.btnAtrasTarde);
         imgTarde = findViewById(R.id.imgTarde);
+
     }
 
     private void inputValues(){
@@ -134,6 +136,8 @@ public class HorarioTarde extends AppCompatActivity {
         txtInstructor3.setText(tmp[2]);
         txtInstructor4.setText(tmp[3]);
         txtInstructor5.setText(tmp[4]);
+        txtInstructor6.setText(tmp[5]);
+
     }
 
 
@@ -143,4 +147,3 @@ public class HorarioTarde extends AppCompatActivity {
         bandera=false;
     }
 }
-
