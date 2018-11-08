@@ -34,6 +34,8 @@ public class InformacionTarde extends AppCompatActivity {
     Button btnCerrar;
     VideoFragment videoFragment;
     ConstraintLayout contenedor;
+    ImageView imgBanner;
+    int c=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,17 +46,27 @@ public class InformacionTarde extends AppCompatActivity {
         bandera = true;
         inizialite();
         inputValues();
-        btnCerrar.setVisibility(View.INVISIBLE);
+        c=0;
+        btnTarde.setVisibility(View.INVISIBLE);
         btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cerrarVideo();
+                if (c==0){
+                    c++;
+                    imgBanner.setVisibility(View.INVISIBLE);
+                    btnCerrar.setVisibility(View.INVISIBLE);
+                    btnTarde.setVisibility(View.VISIBLE);
+
+                }else {
+                    cerrarVideo();
+                }
             }
         });
     }
 
     private void inizialite() {
         txtPrograma = findViewById(R.id.txtNombrePorgramaTarde);
+        imgBanner = findViewById(R.id.imgBanner);
         btnAtras = findViewById(R.id.btnAtrasTarde);
         btnTarde = findViewById(R.id.btnTarde);
         imgTarde = findViewById(R.id.imgVistaInfotarde);

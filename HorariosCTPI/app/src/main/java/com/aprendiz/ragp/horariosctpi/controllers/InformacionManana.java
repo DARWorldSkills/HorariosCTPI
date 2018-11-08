@@ -35,6 +35,8 @@ public class InformacionManana extends AppCompatActivity {
     Button btnCerrar;
     VideoFragment videoFragment;
     ConstraintLayout contenedor;
+    ImageView imgBanner;
+    int c=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,17 +47,27 @@ public class InformacionManana extends AppCompatActivity {
         bandera = true;
         iniziliate();
         inputValues();
-        btnCerrar.setVisibility(View.INVISIBLE);
+        c=0;
+        btnManana.setVisibility(View.INVISIBLE);
         btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cerrarVideo();
+                if (c==0){
+                    c++;
+                    imgBanner.setVisibility(View.INVISIBLE);
+                    btnCerrar.setVisibility(View.INVISIBLE);
+                    btnManana.setVisibility(View.VISIBLE);
+
+                }else {
+                    cerrarVideo();
+                }
             }
         });
     }
 
     private void iniziliate() {
         imgManana = findViewById(R.id.imgVistaInfoManana);
+        imgBanner = findViewById(R.id.imgBanner);
         txtPrograma = findViewById(R.id.txtNombrePrograma);
         btnAtras = findViewById(R.id.btnAtras);
         btnManana = findViewById(R.id.btnManana);
