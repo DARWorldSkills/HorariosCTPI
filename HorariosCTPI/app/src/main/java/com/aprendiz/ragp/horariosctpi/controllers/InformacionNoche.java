@@ -118,6 +118,7 @@ public class InformacionNoche extends AppCompatActivity {
         txtPrograma.setText(programa);
         try {
             Glide.with(this).load(MenuPrincipal.iconosN.getBlanco()).crossFade().into(imgNoche);
+            Glide.with(this).load(MenuPrincipal.programaN.getImagen()).crossFade().into(imgBanner);
 
         }catch (Exception e){
 
