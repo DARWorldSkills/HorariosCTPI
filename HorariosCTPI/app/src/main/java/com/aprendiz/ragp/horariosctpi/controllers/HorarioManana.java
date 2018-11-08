@@ -30,7 +30,6 @@ public class HorarioManana extends AppCompatActivity {
     Boolean bandera;
     Button btnAtras;
     ImageView imgManana;
-    String abreviaciones="";
     List<Horario> horarioList = new ArrayList<>();
 
     @Override
@@ -96,7 +95,6 @@ public class HorarioManana extends AppCompatActivity {
             }
         });
 
-
     }
 
     private void inputData() {
@@ -142,7 +140,6 @@ public class HorarioManana extends AppCompatActivity {
         txtInstructor6.setText(tmp[5]);
 
     }
-
 
     @Override
     protected void onDestroy() {

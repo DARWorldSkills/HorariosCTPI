@@ -53,6 +53,7 @@ public class HorarioNoche extends AppCompatActivity {
         txtInstructor3 = findViewById(R.id.txtInstructor3);
         txtInstructor4 = findViewById(R.id.txtInstructor4);
         txtInstructor5 = findViewById(R.id.txtInstructor5);
+        txtInstructor6 = findViewById(R.id.txtInstructor6);
         recyclerView = findViewById(R.id.recyclerViewNoche);
         imgNoche = findViewById(R.id.imgNoche);
         btnAtras = findViewById(R.id.btnAtrasNoche);
@@ -93,7 +94,6 @@ public class HorarioNoche extends AppCompatActivity {
             }
         });
 
-
     }
 
     private void inputData() {
@@ -104,7 +104,6 @@ public class HorarioNoche extends AppCompatActivity {
         txtPrograma.setText(nombrePrograma);
         txtFicha.setText(ficha);
         try {
-
             horarioList = MenuPrincipal.horarioList.subList(6,7);
             AdapterHorarios adapterHorarios = new AdapterHorarios(horarioList,this,getResources().getColor(R.color.azul));
             recyclerView.setAdapter(adapterHorarios);
@@ -138,6 +137,7 @@ public class HorarioNoche extends AppCompatActivity {
         txtInstructor3.setText(tmp[2]);
         txtInstructor4.setText(tmp[3]);
         txtInstructor5.setText(tmp[4]);
+        txtInstructor6.setText(tmp[5]);
 
     }
 
