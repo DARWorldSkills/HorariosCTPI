@@ -44,9 +44,9 @@ public class VideoFragment extends Fragment {
 
     private void buscarVideo(){
         File exportDir = new File(Environment.getExternalStorageDirectory(),"Videos");
-        Uri uri = Uri.fromFile(new File(exportDir,"capsula1.mp4"));
+        Uri uri = Uri.fromFile(new File(exportDir,"adsi.mp4"));
         if (MenuPrincipal.programaNecesario.getVideo().equals("1")) {
-            uri = Uri.fromFile(new File(exportDir, "capsula1.mp4"));
+            uri = Uri.fromFile(new File(exportDir, "adsi.mp4"));
             Log.e("Video 1","asd");
         }
 
@@ -91,7 +91,7 @@ public class VideoFragment extends Fragment {
 
         }catch (Exception e){
             Log.e("Error", e.getMessage());
-            Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "El video no está disponible", Toast.LENGTH_SHORT).show();
         }
 
         videoReal.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
