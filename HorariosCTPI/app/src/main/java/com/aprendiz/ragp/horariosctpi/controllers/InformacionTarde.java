@@ -9,6 +9,7 @@ import android.os.Environment;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebView;
@@ -22,6 +23,7 @@ import android.widget.VideoView;
 import com.aprendiz.ragp.horariosctpi.MenuPrincipal;
 import com.aprendiz.ragp.horariosctpi.R;
 import com.aprendiz.ragp.horariosctpi.fragments.VideoFragment;
+import com.aprendiz.ragp.horariosctpi.models.Programa;
 import com.bumptech.glide.Glide;
 
 import java.io.File;
@@ -35,6 +37,7 @@ public class InformacionTarde extends AppCompatActivity {
     VideoFragment videoFragment;
     ConstraintLayout contenedor;
     ImageView imgBanner;
+    Programa programa= new Programa();
     int c=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,7 @@ public class InformacionTarde extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         videoFragment=new VideoFragment();
         MenuPrincipal.informacionTarde = this;
+        programa=MenuPrincipal.programaT;
         bandera = true;
         inizialite();
         inputValues();
@@ -83,7 +87,7 @@ public class InformacionTarde extends AppCompatActivity {
             public void run() {
                 while (bandera){
                     try {
-                        Thread.sleep(3000);
+                        Thread.sleep(5000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -91,7 +95,10 @@ public class InformacionTarde extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            inputData();
+                            if (MenuPrincipal.programaT!=programa){
+                                inputData();
+                                programa=MenuPrincipal.programaT;
+                            }
                         }
                     });
                 }
@@ -118,10 +125,10 @@ public class InformacionTarde extends AppCompatActivity {
         txtPrograma.setText(programa);
         try {
             Glide.with(this).load(MenuPrincipal.iconosT.getBlanco()).crossFade().into(imgTarde);
-            Glide.with(this).load(MenuPrincipal.programaT.getImagen()).crossFade().into(imgBanner);
+            Glide.with(this).load(MenuPrincipal.programaT.getImagen()).centerCrop().crossFade().into(imgBanner);
 
         }catch (Exception e){
-
+            Log.e("Error de imagen",e.getMessage());
         }
 
 
