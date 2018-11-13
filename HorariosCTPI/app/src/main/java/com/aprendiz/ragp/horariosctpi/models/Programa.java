@@ -5,6 +5,7 @@ public class Programa {
     private String icono;
     private String nombre;
     private String video;
+    private String imagen;
 
     public String getDescripcion() {
         return descripcion;
@@ -36,5 +37,13 @@ public class Programa {
 
     public void setVideo(String video) {
         this.video = video;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }

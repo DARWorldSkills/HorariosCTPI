@@ -117,6 +117,7 @@ public class InformacionManana extends AppCompatActivity {
         txtPrograma.setText(programa);
         try {
             Glide.with(this).load(MenuPrincipal.iconosM.getBlanco()).crossFade().into(imgManana);
+            Glide.with(this).load(MenuPrincipal.programaM.getImagen()).crossFade().into(imgBanner);
 
         }catch (Exception e){
 

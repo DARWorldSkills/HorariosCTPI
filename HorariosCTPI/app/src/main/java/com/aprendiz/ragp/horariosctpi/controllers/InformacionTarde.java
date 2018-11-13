@@ -118,6 +118,7 @@ public class InformacionTarde extends AppCompatActivity {
         txtPrograma.setText(programa);
         try {
             Glide.with(this).load(MenuPrincipal.iconosT.getBlanco()).crossFade().into(imgTarde);
+            Glide.with(this).load(MenuPrincipal.programaT.getImagen()).crossFade().into(imgBanner);
 
         }catch (Exception e){
 
