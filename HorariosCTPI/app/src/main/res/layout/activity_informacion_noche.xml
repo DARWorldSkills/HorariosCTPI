@@ -56,13 +56,13 @@
 
     <TextView
         android:id="@+id/txtNombrePorgramaNoche"
-        android:layout_width="230dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="44dp"
         android:text="Especialización de Multimedia"
         android:textColor="@color/grisclaro"
-        android:textSize="30sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imgVistaInfonoche"
         app:layout_constraintTop_toTopOf="parent" />

@@ -49,6 +49,7 @@
         android:id="@+id/imgVistaInfotarde"
         android:layout_width="180dp"
         android:layout_height="180dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -56,13 +57,13 @@
 
     <TextView
         android:id="@+id/txtNombrePorgramaTarde"
-        android:layout_width="211dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
         android:layout_marginTop="48dp"
         android:text="Video y Animacion 3D"
         android:textColor="@color/grisclaro"
-        android:textSize="30sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imgVistaInfotarde"
         app:layout_constraintTop_toTopOf="parent" />

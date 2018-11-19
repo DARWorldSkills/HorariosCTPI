@@ -97,7 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="132dp"
         android:textColor="@color/grisoscuro"
-        android:textSize="25sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -108,18 +108,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
         android:textColor="@color/grisoscuro"
-        android:textSize="25sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/txtHorarioManana"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <TextView
         android:id="@+id/txtHorarioNoche"
-        android:layout_width="201dp"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:textColor="@color/grisoscuro"
-        android:textSize="25sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/txtHorarioTarde"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -176,7 +176,7 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="178dp"
+        android:layout_marginStart="120dp"
         android:text="@string/horatarde"
         android:textColor="@color/naranja"
         android:textSize="20sp"
@@ -214,7 +214,7 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="164dp"
+        android:layout_marginStart="110dp"
         android:text="@string/horanoche"
         android:textColor="@color/azul"
         android:textSize="20sp"

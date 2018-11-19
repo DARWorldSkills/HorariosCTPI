@@ -59,12 +59,13 @@
         android:layout_height="167dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.751"
+        app:layout_constraintHorizontal_bias="0.753"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.522" />
 
 
     <TextView
@@ -104,12 +105,12 @@
 
     <TextView
         android:id="@+id/txtNombreProgramaTarde"
-        android:layout_width="wrap_content"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:text="Animación 3D"
         android:textColor="@color/naranja"
-        android:textSize="25sp"
+        android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imgTarde"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
@@ -132,7 +133,7 @@
         android:layout_marginStart="60dp"
         android:text="Erick Ortiz"
         android:textColor="@color/grisoscuro"
-        android:textSize="25sp"
+        android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imgTarde"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
@@ -182,11 +183,11 @@
         android:id="@+id/textView36"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="272dp"
-        android:layout_marginTop="16dp"
-        android:text="13 - 15"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="17dp"
+        android:text="13:00 - 15:00"
         android:textColor="@color/grisoscuro"
-        android:textSize="25sp"
+        android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView35" />
@@ -195,11 +196,11 @@
         android:id="@+id/textView37"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="272dp"
-        android:layout_marginTop="12dp"
-        android:text="15 - 17"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="19dp"
+        android:text="15:00 - 17:00"
         android:textColor="@color/grisoscuro"
-        android:textSize="25sp"
+        android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView36" />
@@ -272,11 +273,11 @@
         android:id="@+id/textView28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="272dp"
-        android:layout_marginTop="20dp"
-        android:text="17 - 19"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="18dp"
+        android:text="17:00 - 19:00"
         android:textColor="@color/grisoscuro"
-        android:textSize="25sp"
+        android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView37" />
@@ -286,7 +287,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="268dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/instructores"
         android:textColor="#fff"
         android:textSize="25sp"
@@ -302,7 +303,7 @@
         android:layout_marginTop="16dp"
         android:text="C = Catalina"
         android:textColor="@color/naranja"
-        android:textSize="25sp"
+        android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView47" />
@@ -315,7 +316,7 @@
         android:layout_marginTop="8dp"
         android:text="J = Jonathan"
         android:textColor="@color/naranja"
-        android:textSize="25sp"
+        android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtInstrucor1" />
@@ -328,7 +329,7 @@
         android:layout_marginTop="16dp"
         android:text="Y = Yuli"
         android:textColor="@color/naranja"
-        android:textSize="25sp"
+        android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/txtInstrucor1"
         app:layout_constraintTop_toBottomOf="@+id/textView47" />
@@ -341,7 +342,7 @@
         android:layout_marginTop="8dp"
         android:text="D = Diego"
         android:textColor="@color/naranja"
-        android:textSize="25sp"
+        android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/txtInstructor2"
         app:layout_constraintTop_toBottomOf="@+id/txtInstructores3" />
@@ -354,7 +355,7 @@
         android:layout_marginTop="16dp"
         android:text="D1 = Danilo"
         android:textColor="@color/naranja"
-        android:textSize="25sp"
+        android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/txtInstructores3"
         app:layout_constraintTop_toBottomOf="@+id/textView47" />
@@ -367,7 +368,7 @@
         android:layout_marginTop="8dp"
         android:text="D1 = Danilo"
         android:textColor="@color/naranja"
-        android:textSize="25sp"
+        android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/txtInstructores3"
         app:layout_constraintTop_toBottomOf="@+id/txtInstructor5" />
