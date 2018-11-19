@@ -18,13 +18,13 @@
 
     <TextView
         android:id="@+id/txtNombrePrograma"
-        android:layout_width="206dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="44dp"
         android:text="Desarrollo de Videojuegos "
         android:textColor="@color/grisclaro"
-        android:textSize="30sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imgVistaInfoManana"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +37,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/botonverde"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.217"
+        app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toEndOf="@+id/txtNombrePrograma"
         app:layout_constraintTop_toTopOf="parent" />
 
