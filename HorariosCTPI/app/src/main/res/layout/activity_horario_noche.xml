@@ -105,13 +105,13 @@
 
     <TextView
         android:id="@+id/txtProgramaNoche"
-        android:layout_width="wrap_content"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:text="Video Y Animación"
-        android:textSize="25sp"
-        android:textStyle="bold"
         android:textColor="@color/azul"
+        android:textSize="23sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imgNoche"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
@@ -133,7 +133,7 @@
         android:layout_marginStart="60dp"
         android:text="Marco Adolfo"
         android:textColor="@color/grisoscuro"
-        android:textSize="25sp"
+        android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imgNoche"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
