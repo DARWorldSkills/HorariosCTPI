@@ -16,7 +16,6 @@ import com.aprendiz.ragp.horariosctpi.R;
 import com.aprendiz.ragp.horariosctpi.models.AdapterHorarios;
 import com.aprendiz.ragp.horariosctpi.models.Horario;
 import com.bumptech.glide.Glide;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -140,7 +139,6 @@ public class HorarioTarde extends AppCompatActivity {
         txtInstructor6.setText(tmp[5]);
 
     }
-
 
     @Override
     protected void onDestroy() {

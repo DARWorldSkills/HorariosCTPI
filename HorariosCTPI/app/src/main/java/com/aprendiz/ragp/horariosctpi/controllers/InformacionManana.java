@@ -1,13 +1,8 @@
 package com.aprendiz.ragp.horariosctpi.controllers;
 
-import android.app.Dialog;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
-import android.os.Environment;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,10 +12,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.VideoView;
 
 import com.aprendiz.ragp.horariosctpi.MenuPrincipal;
 import com.aprendiz.ragp.horariosctpi.R;
@@ -28,7 +20,6 @@ import com.aprendiz.ragp.horariosctpi.fragments.VideoFragment;
 import com.aprendiz.ragp.horariosctpi.models.Programa;
 import com.bumptech.glide.Glide;
 
-import java.io.File;
 
 public class InformacionManana extends AppCompatActivity {
     ImageView imgManana;
@@ -41,6 +32,7 @@ public class InformacionManana extends AppCompatActivity {
     ImageView imgBanner;
     Programa programa= new Programa();
     int c=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -166,6 +158,7 @@ public class InformacionManana extends AppCompatActivity {
         btnCerrar.setVisibility(View.INVISIBLE);
         getSupportFragmentManager().beginTransaction().remove(videoFragment).commit();
         contenedor.setBackgroundColor(Color.TRANSPARENT);
+        finish();
     }
 
     private void watchVideo(){
@@ -180,4 +173,5 @@ public class InformacionManana extends AppCompatActivity {
         super.onDestroy();
         bandera=false;
     }
+
 }
