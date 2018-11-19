@@ -99,7 +99,6 @@ public class InformacionTarde extends AppCompatActivity {
             }
         });
         thread.start();
-
         btnAtras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,6 +111,7 @@ public class InformacionTarde extends AppCompatActivity {
                 watchVideo();
             }
         });
+
     }
 
     private void inputData() {
@@ -158,13 +158,14 @@ public class InformacionTarde extends AppCompatActivity {
         contenedor.setBackgroundColor(getResources().getColor(R.color.trasnsparencia));
         getSupportFragmentManager().beginTransaction().replace(R.id.contenedorV,videoFragment).commit();
         btnCerrar.setVisibility(View.VISIBLE);
+
     }
 
     public void cerrarVideo() {
         btnCerrar.setVisibility(View.INVISIBLE);
         getSupportFragmentManager().beginTransaction().remove(videoFragment).commit();
         contenedor.setBackgroundColor(Color.TRANSPARENT);
-        finish();
+
     }
 
     @Override

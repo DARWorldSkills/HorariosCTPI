@@ -44,6 +44,7 @@ public class InformacionNoche extends AppCompatActivity {
         bandera = true;
         inizialite();
         inputValues();
+        c=0;
         btnNoche.setVisibility(View.INVISIBLE);
         btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +99,6 @@ public class InformacionNoche extends AppCompatActivity {
             }
         });
         thread.start();
-
         btnAtras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,6 +111,7 @@ public class InformacionNoche extends AppCompatActivity {
                 watchVideo();
             }
         });
+
     }
 
     private void inputData() {
@@ -157,13 +158,14 @@ public class InformacionNoche extends AppCompatActivity {
         contenedor.setBackgroundColor(getResources().getColor(R.color.trasnsparencia));
         getSupportFragmentManager().beginTransaction().replace(R.id.contenedorV,videoFragment).commit();
         btnCerrar.setVisibility(View.VISIBLE);
+
     }
 
     public void cerrarVideo() {
         btnCerrar.setVisibility(View.INVISIBLE);
         getSupportFragmentManager().beginTransaction().remove(videoFragment).commit();
         contenedor.setBackgroundColor(Color.TRANSPARENT);
-        finish();
+
     }
 
     @Override

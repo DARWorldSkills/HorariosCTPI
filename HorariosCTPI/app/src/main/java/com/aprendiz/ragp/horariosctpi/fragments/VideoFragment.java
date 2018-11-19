@@ -100,14 +100,17 @@ public class VideoFragment extends Fragment {
                 switch (MenuPrincipal.nPrograma){
                     case 1:
                         MenuPrincipal.informacionManana.cerrarVideo();
+                        getActivity().finish();
                         break;
 
                     case 2:
                         MenuPrincipal.informacionTarde.cerrarVideo();
+                        getActivity().finish();
                         break;
 
                     case 3:
                         MenuPrincipal.informacionNoche.cerrarVideo();
+                        getActivity().finish();
                         break;
                 }
 

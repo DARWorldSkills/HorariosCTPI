@@ -29,7 +29,6 @@ public class HorarioTarde extends AppCompatActivity {
     Boolean bandera;
     List<Horario> horarioList = new ArrayList<>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,4 +144,5 @@ public class HorarioTarde extends AppCompatActivity {
         super.onDestroy();
         bandera=false;
     }
+
 }

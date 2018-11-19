@@ -70,6 +70,7 @@ public class InformacionManana extends AppCompatActivity {
         btnManana = findViewById(R.id.btnManana);
         btnCerrar = findViewById(R.id.btnCerrar);
         contenedor = findViewById(R.id.contenedorV);
+
     }
 
     private void inputValues() {
@@ -97,6 +98,7 @@ public class InformacionManana extends AppCompatActivity {
                 }
             }
         });
+        thread.start();
         btnAtras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,7 +111,6 @@ public class InformacionManana extends AppCompatActivity {
                 watchVideo();
             }
         });
-        thread.start();
     }
 
     private void inputData() {
@@ -151,6 +152,12 @@ public class InformacionManana extends AppCompatActivity {
         //Carga url de .PDF en WebView  mediante Google Drive Viewer.
         webView.loadUrl(pdf);
 
+    }
+
+    private void watchVideo(){
+        contenedor.setBackgroundColor(getResources().getColor(R.color.trasnsparencia));
+        getSupportFragmentManager().beginTransaction().replace(R.id.contenedorV,videoFragment).commit();
+        btnCerrar.setVisibility(View.VISIBLE);
 
     }
 
@@ -158,13 +165,6 @@ public class InformacionManana extends AppCompatActivity {
         btnCerrar.setVisibility(View.INVISIBLE);
         getSupportFragmentManager().beginTransaction().remove(videoFragment).commit();
         contenedor.setBackgroundColor(Color.TRANSPARENT);
-        finish();
-    }
-
-    private void watchVideo(){
-        contenedor.setBackgroundColor(getResources().getColor(R.color.trasnsparencia));
-        getSupportFragmentManager().beginTransaction().replace(R.id.contenedorV,videoFragment).commit();
-        btnCerrar.setVisibility(View.VISIBLE);
 
     }
 
