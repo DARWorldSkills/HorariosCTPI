@@ -26,8 +26,10 @@ import com.aprendiz.ragp.horariosctpi.controllers.InformacionNoche;
 import com.aprendiz.ragp.horariosctpi.controllers.InformacionTarde;
 import com.aprendiz.ragp.horariosctpi.controllers.IniciarSesion;
 import com.aprendiz.ragp.horariosctpi.models.Ambiente;
+import com.aprendiz.ragp.horariosctpi.models.AmbienteHorario;
 import com.aprendiz.ragp.horariosctpi.models.Ficha;
 import com.aprendiz.ragp.horariosctpi.models.Horario;
+import com.aprendiz.ragp.horariosctpi.models.HorarioInstructor;
 import com.aprendiz.ragp.horariosctpi.models.Iconos;
 import com.aprendiz.ragp.horariosctpi.models.Instructor;
 import com.aprendiz.ragp.horariosctpi.models.Programa;
@@ -84,6 +86,9 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     public static InformacionManana informacionManana;
     public static InformacionTarde informacionTarde;
     public static InformacionNoche informacionNoche;
+
+    List<AmbienteHorario> listaDeTodos =new ArrayList<>();
+    public static List<HorarioInstructor> hoInstructorNo = new ArrayList<>();
 
 
     @Override
@@ -305,6 +310,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
                     }
 
                 }
+                obtenerTodosLosHorarios();
                 obtenerIconos();
 
             }
@@ -326,7 +332,6 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 GenericTypeIndicator<ArrayList<Iconos>> t = new GenericTypeIndicator<ArrayList<Iconos>>(){};
                 iconosList = dataSnapshot.getValue(t);
-
                 for (int i=0; i<iconosList.size();i++){
                     if (iconosList.get(i).getNombre().equals(iconos[0])) {
                         try {
@@ -393,6 +398,129 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
             }
         });
     }
+
+
+    private void obtenerTodosLosHorarios(){
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        for (int i = 0 ; i<ambienteList.size();i++){
+            DatabaseReference horario = reference.child(ambienteList.get(i).getApodo());
+            final int finalI = i;
+            horario.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    GenericTypeIndicator<ArrayList<Horario>> t = new GenericTypeIndicator<ArrayList<Horario>>(){};
+                    listaDeTodos.add(new AmbienteHorario(ambienteList.get(finalI).getApodo(),dataSnapshot.getValue(t)));
+                    if (ambienteList.size()>=listaDeTodos.size()){
+                        obtenerListaHorarioInstructor();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+    }
+
+
+    private void obtenerListaHorarioInstructor() {
+        HorarioInstructor horarioInstructor = new HorarioInstructor();
+        List<String> instructores = new ArrayList<>();
+        for (int i=0;i<listaDeTodos.size();i++){
+            for (int j=0; j<listaDeTodos.get(i).getHorario().size();j++){
+                Horario horario =listaDeTodos.get(i).getHorario().get(i);
+
+                if (!instructores.contains(horario.getLunes())){
+                    instructores.add(horario.getLunes());
+                }
+                if (!instructores.contains(horario.getMartes())){
+                    instructores.add(horario.getMartes());
+                }
+                if (!instructores.contains(horario.getMiercoles())){
+                    instructores.add(horario.getMiercoles());
+                }
+                if (!instructores.contains(horario.getJueves())){
+                    instructores.add(horario.getJueves());
+                }
+                if (!instructores.contains(horario.getViernes())){
+                    instructores.add(horario.getViernes());
+                }
+                if (!instructores.contains(horario.getSabado()) && !horario.getSabado().equals("No Habilitado")){
+                    instructores.add(horario.getSabado());
+                }
+
+
+
+
+            }
+        }
+
+        for (int i=0;i<listaDeTodos.size();i++) {
+
+            for (int j=0;j<listaDeTodos.get(i).getHorario().size();j++) {
+                Horario horario = listaDeTodos.get(i).getHorario().get(i);
+                for (int k=0;k<instructores.size();k++){
+                    horarioInstructor.setNombre(instructores.get(i));
+                    if (horario.getLunes().equals(horarioInstructor.getNombre())){
+                        horarioInstructor.setFichaLunes(horario.getFicha()+" "+listaDeTodos.get(i).getNombre());
+                    }else {
+                        horarioInstructor.setFichaLunes("");
+                    }
+
+                    if (horario.getMartes().equals(horarioInstructor.getNombre())){
+                        horarioInstructor.setFichaMartes(horario.getFicha()+" "+listaDeTodos.get(i).getNombre());
+                    }else {
+                        horarioInstructor.setFichaMartes("");
+                    }
+
+
+                    if (horario.getMiercoles().equals(horarioInstructor.getNombre())){
+                        horarioInstructor.setFichaMiercoles(horario.getFicha()+" "+listaDeTodos.get(i).getNombre());
+                    }else {
+                        horarioInstructor.setFichaMiercoles("");
+                    }
+
+                    if (horario.getJueves().equals(horarioInstructor.getNombre())){
+                        horarioInstructor.setFichaJueves(horario.getFicha()+" "+listaDeTodos.get(i).getNombre());
+                    }else {
+                        horarioInstructor.setFichaJueves("");
+                    }
+
+                    if (horario.getViernes().equals(horarioInstructor.getNombre())){
+                        horarioInstructor.setFichaViernes(horario.getFicha()+" "+listaDeTodos.get(i).getNombre());
+                    }else {
+                        horarioInstructor.setFichaViernes("");
+                    }
+
+                    if (horario.getSabado().equals(horarioInstructor.getNombre())){
+                        horarioInstructor.setFichaSabado(horario.getFicha()+" "+listaDeTodos.get(i).getNombre());
+                    }else {
+                        horarioInstructor.setFichaSabado("");
+                    }
+                    horarioInstructor.setHora(horario.getHora());
+
+                    hoInstructorNo.add(horarioInstructor);
+                }
+            }
+
+        }
+
+        enConsolaLaPerdicion();
+    }
+
+    private void enConsolaLaPerdicion() {
+        for (int i=0; i<hoInstructorNo.size();i++) {
+            String mensaje = hoInstructorNo.get(i).getNombre() + " " + hoInstructorNo.get(i).getFichaLunes() + " " + hoInstructorNo.get(i).getFichaMartes() + " " +
+                    hoInstructorNo.get(i).getFichaMiercoles() + " " + hoInstructorNo.get(i).getFichaJueves() + " " + hoInstructorNo.get(i).getFichaViernes() + " " +
+                    hoInstructorNo.get(i).getFichaSabado()+" "+ hoInstructorNo.get(i).getHora();
+            Log.e("Horario"+i, mensaje);
+        }
+        Log.e("asd",""+hoInstructorNo.size());
+
+    }
+
 
     @Override
     public void onClick(View v) {
