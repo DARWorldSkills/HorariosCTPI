@@ -27,6 +27,7 @@ import com.aprendiz.ragp.horariosctpi.controllers.InformacionTarde;
 import com.aprendiz.ragp.horariosctpi.controllers.IniciarSesion;
 import com.aprendiz.ragp.horariosctpi.models.Ambiente;
 import com.aprendiz.ragp.horariosctpi.models.AmbienteHorario;
+import com.aprendiz.ragp.horariosctpi.models.AmbienteHorarioFicha;
 import com.aprendiz.ragp.horariosctpi.models.Ficha;
 import com.aprendiz.ragp.horariosctpi.models.Horario;
 import com.aprendiz.ragp.horariosctpi.models.HorarioInstructor;
@@ -45,6 +46,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -88,6 +90,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     public static InformacionNoche informacionNoche;
 
     List<AmbienteHorario> listaDeTodos =new ArrayList<>();
+    List<AmbienteHorarioFicha> listaTodosLosHorarios = new ArrayList<>();
     public static List<HorarioInstructor> hoInstructorNo = new ArrayList<>();
 
 
@@ -430,7 +433,8 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
         List<String> instructores = new ArrayList<>();
         for (int i=0;i<listaDeTodos.size();i++){
             for (int j=0; j<listaDeTodos.get(i).getHorario().size();j++){
-                Horario horario =listaDeTodos.get(i).getHorario().get(i);
+                Horario horario =listaDeTodos.get(i).getHorario().get(j);
+                listaTodosLosHorarios.add(new AmbienteHorarioFicha(listaDeTodos.get(i).getNombre(),horario));
 
                 if (!instructores.contains(horario.getLunes())){
                     instructores.add(horario.getLunes());
@@ -456,56 +460,67 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
 
             }
         }
+        Log.e("asdasd",""+instructores.size());
 
-        for (int i=0;i<listaDeTodos.size();i++) {
-
-            for (int j=0;j<listaDeTodos.get(i).getHorario().size();j++) {
-                Horario horario = listaDeTodos.get(i).getHorario().get(i);
-                for (int k=0;k<instructores.size();k++){
-                    horarioInstructor.setNombre(instructores.get(i));
-                    if (horario.getLunes().equals(horarioInstructor.getNombre())){
-                        horarioInstructor.setFichaLunes(horario.getFicha()+" "+listaDeTodos.get(i).getNombre());
-                    }else {
-                        horarioInstructor.setFichaLunes("");
-                    }
-
-                    if (horario.getMartes().equals(horarioInstructor.getNombre())){
-                        horarioInstructor.setFichaMartes(horario.getFicha()+" "+listaDeTodos.get(i).getNombre());
-                    }else {
-                        horarioInstructor.setFichaMartes("");
-                    }
-
-
-                    if (horario.getMiercoles().equals(horarioInstructor.getNombre())){
-                        horarioInstructor.setFichaMiercoles(horario.getFicha()+" "+listaDeTodos.get(i).getNombre());
-                    }else {
-                        horarioInstructor.setFichaMiercoles("");
-                    }
-
-                    if (horario.getJueves().equals(horarioInstructor.getNombre())){
-                        horarioInstructor.setFichaJueves(horario.getFicha()+" "+listaDeTodos.get(i).getNombre());
-                    }else {
-                        horarioInstructor.setFichaJueves("");
-                    }
-
-                    if (horario.getViernes().equals(horarioInstructor.getNombre())){
-                        horarioInstructor.setFichaViernes(horario.getFicha()+" "+listaDeTodos.get(i).getNombre());
-                    }else {
-                        horarioInstructor.setFichaViernes("");
-                    }
-
-                    if (horario.getSabado().equals(horarioInstructor.getNombre())){
-                        horarioInstructor.setFichaSabado(horario.getFicha()+" "+listaDeTodos.get(i).getNombre());
-                    }else {
-                        horarioInstructor.setFichaSabado("");
-                    }
-                    horarioInstructor.setHora(horario.getHora());
-
-                    hoInstructorNo.add(horarioInstructor);
-                }
-            }
+        Log.e("asdasd1",""+listaTodosLosHorarios.size());
+        int tmp=0;
+        int dps =0;
+        for (int i=0;i<instructores.size();i++){{
+            Log.e("Instructores",instructores.get(i));
+        }
 
         }
+
+        do {
+            for (int i=0; i<listaTodosLosHorarios.size();i++){
+                dps =0;
+                horarioInstructor = new HorarioInstructor();
+                horarioInstructor.setNombre(instructores.get(tmp));
+                if (listaTodosLosHorarios.get(i).getHorario().getLunes().equals(instructores.get(tmp))){
+                    horarioInstructor.setFichaLunes(listaTodosLosHorarios.get(i).getHorario().getFicha()+" ");
+                    horarioInstructor.setNombre(instructores.get(tmp));
+                    dps =1;
+                }
+
+                if (listaTodosLosHorarios.get(i).getHorario().getMartes().equals(instructores.get(tmp))){
+                    horarioInstructor.setFichaMartes(listaTodosLosHorarios.get(i).getHorario().getFicha());
+                    horarioInstructor.setNombre(instructores.get(tmp));
+                    dps =1;
+                }
+
+                if (listaTodosLosHorarios.get(i).getHorario().getMiercoles().equals(instructores.get(tmp))){
+                    horarioInstructor.setFichaMiercoles(listaTodosLosHorarios.get(i).getHorario().getFicha()+" "+listaTodosLosHorarios.get(i).getNombre());
+                    horarioInstructor.setNombre(instructores.get(tmp));
+                    dps =1;
+                }
+
+                if (listaTodosLosHorarios.get(i).getHorario().getJueves().equals(instructores.get(tmp))){
+                    horarioInstructor.setFichaJueves(listaTodosLosHorarios.get(i).getHorario().getFicha()+" "+listaTodosLosHorarios.get(i).getNombre());
+                    horarioInstructor.setNombre(instructores.get(tmp));
+                    dps =1;
+                }
+
+                if (listaTodosLosHorarios.get(i).getHorario().getViernes().equals(instructores.get(tmp))){
+                    horarioInstructor.setFichaViernes(listaTodosLosHorarios.get(i).getHorario().getFicha()+" "+listaTodosLosHorarios.get(i).getNombre());
+                    horarioInstructor.setNombre(instructores.get(tmp));
+                    dps =1;
+                }
+
+                if (listaTodosLosHorarios.get(i).getHorario().getSabado().equals(instructores.get(tmp))){
+                    horarioInstructor.setFichaSabado(listaTodosLosHorarios.get(i).getHorario().getFicha()+" "+listaTodosLosHorarios.get(i).getNombre());
+                    horarioInstructor.setNombre(instructores.get(tmp));
+                    dps =1;
+                }
+
+                horarioInstructor.setHora(listaTodosLosHorarios.get(i).getHorario().getHora());
+                if (dps>0){
+                    hoInstructorNo.add(horarioInstructor);
+                }
+
+            }
+            tmp++;
+
+        }while (instructores.size()<tmp);
 
         enConsolaLaPerdicion();
     }
