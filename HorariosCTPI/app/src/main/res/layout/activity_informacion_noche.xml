@@ -97,7 +97,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:elevation="10dp"
-        android:background="@drawable/botonsalir"
+        android:background="@drawable/salirnaranja"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

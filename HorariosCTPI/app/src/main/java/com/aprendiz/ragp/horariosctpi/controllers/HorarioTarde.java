@@ -109,7 +109,7 @@ public class HorarioTarde extends AppCompatActivity {
             recyclerView.setLayoutManager(new LinearLayoutManager(HorarioTarde.this,LinearLayoutManager.VERTICAL,false));
             recyclerView.setHasFixedSize(true);
             if(horarioList.get(0).getComentarios().length()<1){
-                txtComentarios.setText("No hay comentarios");
+                txtComentarios.setText("No hay come ntarios");
             }else {
                 txtComentarios.setText(horarioList.get(0).getComentarios());
             }
