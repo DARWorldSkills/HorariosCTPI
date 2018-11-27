@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aprendiz.ragp.horariosctpi.controllers.CapsulasInfo;
 import com.aprendiz.ragp.horariosctpi.controllers.HorarioManana;
@@ -90,7 +91,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     List<AmbienteHorarioFicha> listaTodosLosHorarios = new ArrayList<>();
     //public static List<HorarioInstructor> hoInstructorNo = new ArrayList<>();
 
-    List<InstructorHorario> hoInstructorNo = new ArrayList<>();
+    public static List<InstructorHorario> hoInstructorNo = new ArrayList<>();
 
 
     @Override
@@ -181,7 +182,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
 
                             }
 
-                        }catch (Exception e){
+                        }catch (Exception ignored){
 
                         }
 
@@ -478,6 +479,8 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
             if (hoInstructorNo.get(i).getNombre().equals("Catalina G") ) {
                 Log.e("Horario:" + i, hoInstructorNo.get(i).getNombre() + " " + hoInstructorNo.get(i).getFicha() + " " + hoInstructorNo.get(i).getDia() + " " + hoInstructorNo.get(i).getHora()+" "+hoInstructorNo.get(i).getAmbiente());
             }
+
+
 
             try {
                 if (strings[0].equals("C") || strings[1].equals("C")){

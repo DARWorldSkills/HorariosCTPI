@@ -28,7 +28,8 @@ public class HorarioTarde extends AppCompatActivity {
     ImageView imgTarde;
     Boolean bandera;
     List<Horario> horarioList = new ArrayList<>();
-
+    List<Horario> tmpHorarioList = new ArrayList<>();
+    int tmp=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,12 +105,13 @@ public class HorarioTarde extends AppCompatActivity {
         txtFicha.setText(ficha);
         try {
             horarioList = MenuPrincipal.horarioList.subList(3,6);
+
             AdapterHorarios adapterHorarios = new AdapterHorarios(horarioList,this,getResources().getColor(R.color.naranja));
             recyclerView.setAdapter(adapterHorarios);
             recyclerView.setLayoutManager(new LinearLayoutManager(HorarioTarde.this,LinearLayoutManager.VERTICAL,false));
             recyclerView.setHasFixedSize(true);
             if(horarioList.get(0).getComentarios().length()<1){
-                txtComentarios.setText("No hay come ntarios");
+                txtComentarios.setText("No hay comentarios");
             }else {
                 txtComentarios.setText(horarioList.get(0).getComentarios());
             }
@@ -126,6 +128,36 @@ public class HorarioTarde extends AppCompatActivity {
         }
 
     }
+
+    private void llenarTexto(String nombre1, String split) {
+        String tmp1 = nombre1+" "+split;
+        if (txtInstructor1.getText().toString().length()<1 && tmp>0){
+            txtInstructor1.setText(tmp1);
+        }
+
+        if (txtInstructor2.getText().toString().length()<1 && tmp>1){
+            txtInstructor2.setText(tmp1);
+        }
+
+        if (txtInstructor3.getText().toString().length()>1 && tmp>2){
+            txtInstructor3.setText(tmp1);
+        }
+
+        if (txtInstructor4.getText().toString().length()>1 && tmp>3){
+            txtInstructor4.setText(tmp1);
+        }
+
+        if (txtInstructor5.getText().toString().length()>1 && tmp>4){
+            txtInstructor5.setText(tmp1);
+        }
+
+        if (txtInstructor6.getText().toString().length()>1 && tmp>5){
+            txtInstructor6.setText(tmp1);
+        }
+
+
+    }
+
 
     public void inputAbreviacion(){
         String[] tmp =horarioList.get(0).getAbreviaciones().split(";");
