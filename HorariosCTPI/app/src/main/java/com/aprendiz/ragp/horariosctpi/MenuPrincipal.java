@@ -499,7 +499,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
 
     private void enConsolaLaPerdicion() {
 
-       Log.e("lista", String.valueOf(listaTodosLosHorarios.size()));
+        Log.e("lista", String.valueOf(listaTodosLosHorarios.size()));
         for (int i=0;i<hoInstructorNo.size();i++){
             String [] strings = hoInstructorNo.get(i).getNombre().split("/");
             if (hoInstructorNo.get(i).getNombre().equals("Flor Hernandez") ) {
