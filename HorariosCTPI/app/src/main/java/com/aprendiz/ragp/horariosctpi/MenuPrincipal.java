@@ -24,12 +24,12 @@ import com.aprendiz.ragp.horariosctpi.controllers.InformacionManana;
 import com.aprendiz.ragp.horariosctpi.controllers.InformacionNoche;
 import com.aprendiz.ragp.horariosctpi.controllers.InformacionTarde;
 import com.aprendiz.ragp.horariosctpi.controllers.IniciarSesion;
+import com.aprendiz.ragp.horariosctpi.models.AbreviacionInstructor;
 import com.aprendiz.ragp.horariosctpi.models.Ambiente;
 import com.aprendiz.ragp.horariosctpi.models.AmbienteHorario;
 import com.aprendiz.ragp.horariosctpi.models.AmbienteHorarioFicha;
 import com.aprendiz.ragp.horariosctpi.models.Ficha;
 import com.aprendiz.ragp.horariosctpi.models.Horario;
-import com.aprendiz.ragp.horariosctpi.models.HorarioInstructor;
 import com.aprendiz.ragp.horariosctpi.models.Iconos;
 import com.aprendiz.ragp.horariosctpi.models.Instructor;
 import com.aprendiz.ragp.horariosctpi.models.InstructorHorario;
@@ -58,12 +58,10 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
 
     public static List<Ambiente> ambienteList = new ArrayList<>();
     public static List<Horario> horarioList = new ArrayList<>();
-    List<List<Horario>> listaDeTodos = new ArrayList<>();
     public static List<Ficha> fichaList = new ArrayList<>();
     public static List<Programa> programaList = new ArrayList<>();
     public static List<Iconos> iconosList = new ArrayList<>();
     public static List<Instructor> instructorList = new ArrayList<>();
-    public static List<HorarioInstructor> horarioInstructorList = new ArrayList<>();
     public static Activity fa;
     String ficha[] =new String[3];
     String [] programa =new String[3];
@@ -85,7 +83,6 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     public static Programa programaN = new Programa();
     public static Programa programaNecesario = new Programa();
     public static int nPrograma=0;
-    public static List<HorarioInstructor> hoInstructorNo = new ArrayList<>();
 
     public static InformacionManana informacionManana;
     public static InformacionTarde informacionTarde;
@@ -96,6 +93,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     //public static List<HorarioInstructor> hoInstructorNo = new ArrayList<>();
 
     public static List<InstructorHorario> hoInstructorNo = new ArrayList<>();
+    public static List<AbreviacionInstructor> abreInstructorList = new ArrayList<>();
 
 
     @Override
@@ -412,21 +410,13 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         for (int i = 0 ; i<ambienteList.size();i++){
             DatabaseReference horario = reference.child(ambienteList.get(i).getApodo());
-<<<<<<< HEAD
-=======
             final int finalI = i;
->>>>>>> ad7d76269b4dff6796ac4036b9878bc1ae8e4d06
             horario.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     GenericTypeIndicator<ArrayList<Horario>> t = new GenericTypeIndicator<ArrayList<Horario>>(){};
-<<<<<<< HEAD
-                    listaDeTodos.add(dataSnapshot.getValue(t));
-                    if (ambienteList.size()>=listaDeTodos.size()){
-=======
                     listaDeTodos.add(new AmbienteHorario(ambienteList.get(finalI).getNombre(),dataSnapshot.getValue(t)));
                     if (ambienteList.size()==listaDeTodos.size()){
->>>>>>> ad7d76269b4dff6796ac4036b9878bc1ae8e4d06
                         obtenerListaHorarioInstructor();
                     }
                 }
@@ -439,34 +429,6 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
         }
     }
 
-<<<<<<< HEAD
-    private void obtenerListaHorarioInstructor() {
-        HorarioInstructor horarioInstructor = new HorarioInstructor();
-        List<String> instructores = new ArrayList<>();
-        for (int i=0;i<listaDeTodos.size();i++){
-            for (int j=0; j<listaDeTodos.get(i).size();j++){
-
-                if (!instructores.contains(listaDeTodos.get(i).get(j).getLunes())){
-                    instructores.add(listaDeTodos.get(i).get(j).getLunes());
-                }
-                if (!instructores.contains(listaDeTodos.get(i).get(j).getMartes())){
-                    instructores.add(listaDeTodos.get(i).get(j).getLunes());
-                }
-                if (!instructores.contains(listaDeTodos.get(i).get(j).getMiercoles())){
-                    instructores.add(listaDeTodos.get(i).get(j).getLunes());
-                }
-                if (!instructores.contains(listaDeTodos.get(i).get(j).getJueves())){
-                    instructores.add(listaDeTodos.get(i).get(j).getLunes());
-                }
-                if (!instructores.contains(listaDeTodos.get(i).get(j).getViernes())){
-                    instructores.add(listaDeTodos.get(i).get(j).getLunes());
-                }
-                if (!instructores.contains(listaDeTodos.get(i).get(j).getSabado()) && listaDeTodos.get(i).get(j).getSabado().equals("No Habilitado")){
-                    instructores.add(listaDeTodos.get(i).get(j).getLunes());
-                }
-
-
-=======
 
     private void obtenerListaHorarioInstructor() {
         List<String> instructores = new ArrayList<>();
@@ -478,52 +440,10 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
 
                     listaTodosLosHorarios.add(new AmbienteHorarioFicha(listaDeTodos.get(i).getNombre(),horario));
                 }
->>>>>>> ad7d76269b4dff6796ac4036b9878bc1ae8e4d06
 
             }
         }
 
-<<<<<<< HEAD
-        for (int i=0;i<listaDeTodos.size();i++) {
-
-            for (int j=0;j<listaDeTodos.get(i).size();j++) {
-
-                for (int k=0;k<instructores.size();k++){
-                    horarioInstructor.setNombre(instructores.get(i));
-                    if (listaDeTodos.get(i).get(j).getLunes().equals(horarioInstructor.getNombre())){
-                        horarioInstructor.setFichaLunes(listaDeTodos.get(i).get(j).getFicha());
-                    }
-
-                    if (listaDeTodos.get(i).get(j).getMartes().equals(horarioInstructor.getNombre())){
-                        horarioInstructor.setFichaMartes(listaDeTodos.get(i).get(j).getFicha());
-                    }
-
-
-                    if (listaDeTodos.get(i).get(j).getMiercoles().equals(horarioInstructor.getNombre())){
-                        horarioInstructor.setFichaMiercoles(listaDeTodos.get(i).get(j).getFicha());
-                    }
-
-                    if (listaDeTodos.get(i).get(j).getJueves().equals(horarioInstructor.getNombre())){
-                        horarioInstructor.setFichaJueves(listaDeTodos.get(i).get(j).getFicha());
-                    }
-
-                    if (listaDeTodos.get(i).get(j).getViernes().equals(horarioInstructor.getNombre())){
-                        horarioInstructor.setFichaViernes(listaDeTodos.get(i).get(j).getFicha());
-                    }
-
-                    if (listaDeTodos.get(i).get(j).getSabado().equals(horarioInstructor.getNombre())){
-                        horarioInstructor.setFichaSabado(listaDeTodos.get(i).get(j).getFicha());
-                    }
-
-                }
-            }
-
-        }
-
-
-    }
-
-=======
         for (int i=0;i<listaTodosLosHorarios.size();i++){
             InstructorHorario instructorHorario = new InstructorHorario();
             Horario horario  = listaTodosLosHorarios.get(i).getHorario();
@@ -549,24 +469,48 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
             }
         }
 
+        ingresarAbreviacion();
 
         enConsolaLaPerdicion();
     }
 
+
+    private void ingresarAbreviacion(){
+        String[] tmp =horarioList.get(0).getAbreviaciones().split(";");
+        abreInstructorList = new ArrayList<>();
+        String split [];
+        for (int i=0; i<tmp.length;i++){
+            split= tmp[i].split("=");
+            if (split.length>1){
+                abreInstructorList.add(new AbreviacionInstructor(split[0],split[1]));
+            }
+
+        }
+
+        for (int i=0;i<hoInstructorNo.size();i++){
+            for (int j=0;j<abreInstructorList.size();j++){
+                if (abreInstructorList.get(j).equals(hoInstructorNo.get(i).getNombre())){
+                    hoInstructorNo.get(i).setAbreviacion(abreInstructorList.get(j).getAbreviacion());
+                }
+            }
+        }
+
+    }
+
     private void enConsolaLaPerdicion() {
 
-       Log.e("lista", String.valueOf(listaTodosLosHorarios.size()));
+        Log.e("lista", String.valueOf(listaTodosLosHorarios.size()));
         for (int i=0;i<hoInstructorNo.size();i++){
             String [] strings = hoInstructorNo.get(i).getNombre().split("/");
-            if (hoInstructorNo.get(i).getNombre().equals("Catalina G") ) {
+            if (hoInstructorNo.get(i).getNombre().equals("Flor Hernandez") ) {
                 Log.e("Horario:" + i, hoInstructorNo.get(i).getNombre() + " " + hoInstructorNo.get(i).getFicha() + " " + hoInstructorNo.get(i).getDia() + " " + hoInstructorNo.get(i).getHora()+" "+hoInstructorNo.get(i).getAmbiente());
             }
 
 
 
             try {
-                if (strings[0].equals("C") || strings[1].equals("C")){
-                    Log.e("Horario:" + i, "Catalina G"+ " " + hoInstructorNo.get(i).getFicha() + " " + hoInstructorNo.get(i).getDia() + " " + hoInstructorNo.get(i).getHora()+" "+hoInstructorNo.get(i).getAmbiente());
+                if (strings[0].equals("F") || strings[1].equals("F")){
+                    Log.e("Horario:" + i, "Flor Hernandez"+ " " + hoInstructorNo.get(i).getFicha() + " " + hoInstructorNo.get(i).getDia() + " " + hoInstructorNo.get(i).getHora()+" "+hoInstructorNo.get(i).getAmbiente());
                 }
 
             }catch (Exception ignored){
@@ -577,7 +521,6 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     }
 
 
->>>>>>> ad7d76269b4dff6796ac4036b9878bc1ae8e4d06
     @Override
     public void onClick(View v) {
         Intent intent = new Intent();
@@ -615,5 +558,4 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
 
         }
     }
-
 }
