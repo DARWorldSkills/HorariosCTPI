@@ -235,6 +235,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
                 obtenerFicha();
 
 
+
             }
 
             @Override
@@ -315,8 +316,9 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
                     }
 
                 }
-                obtenerTodosLosHorarios();
+
                 obtenerIconos();
+                obtenerTodosLosHorarios();
 
             }
 
