@@ -97,7 +97,7 @@
                 android:id="@+id/textView22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="92dp"
+                android:layout_marginStart="85dp"
                 android:layout_marginTop="24dp"
                 android:text="@string/jueves"
                 android:textColor="#fff"
@@ -217,11 +217,11 @@
                 android:id="@+id/recyclerView"
                 android:layout_width="942dp"
                 android:layout_height="424dp"
-                android:layout_marginStart="7dp"
-                android:layout_marginTop="88dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="96dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.917"
+                app:layout_constraintHorizontal_bias="0.843"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
