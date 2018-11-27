@@ -6,6 +6,7 @@ public class InstructorHorario {
     private String hora;
     private String ficha;
     private String ambiente;
+    private String abreviacion;
 
     public InstructorHorario() {
     }
@@ -57,5 +58,13 @@ public class InstructorHorario {
 
     public void setAmbiente(String ambiente) {
         this.ambiente = ambiente;
+    }
+
+    public String getAbreviacion() {
+        return abreviacion;
+    }
+
+    public void setAbreviacion(String abreviacion) {
+        this.abreviacion = abreviacion;
     }
 }

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
@@ -43,7 +44,7 @@ public class HorarioManana extends AppCompatActivity {
     List<Horario> tmpHorarioList = new ArrayList<>();
     List<InstructorHorario> instructorHorarios = new ArrayList<>();
 
-    String[] horarioOrganizado= new String[40];
+    String[] horarioOrganizado= new String[35];
     String horarioSabado="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,21 +127,63 @@ public class HorarioManana extends AppCompatActivity {
             adapterHorarios.setOnItemCLickListener1(new AdapterHorarios.OnItemCLickListener() {
                 @Override
                 public void itemClick(String txtNombre, int position) {
-                    llamarHorarios(txtNombre);
+                    int tmp =0;
+                    for (int i=0;i<MenuPrincipal.abreInstructorList.size();i++){
+                        String split[] = MenuPrincipal.abreInstructorList.get(i).getNombre().split(" ");
+                        String nombre = split[0]+" "+split[1].substring(0,1);
+                        if (nombre.equals(txtNombre)){
+                            llamarHorarios(txtNombre,MenuPrincipal.abreInstructorList.get(i).getAbreviacion());
+                            tmp=1;
+
+                        }
+
+                    }
+
+                    if (MenuPrincipal.abreInstructorList.size()<1 || tmp==0){
+                        llamarHorarios(txtNombre,"No disponible");
+                    }
                 }
             });
 
             adapterHorarios.setOnItemCLickListener2(new AdapterHorarios.OnItemCLickListener() {
                 @Override
                 public void itemClick(String txtNombre, int position) {
-                    llamarHorarios(txtNombre);
+                    int tmp =0;
+                    for (int i=0;i<MenuPrincipal.abreInstructorList.size();i++){
+                        String split[] = MenuPrincipal.abreInstructorList.get(i).getNombre().split(" ");
+                        String nombre = split[0]+" "+split[1].substring(0,1);
+                        if (nombre.equals(txtNombre)){
+                            llamarHorarios(txtNombre,MenuPrincipal.abreInstructorList.get(i).getAbreviacion());
+                            tmp=1;
+
+                        }
+
+                    }
+
+                    if (MenuPrincipal.abreInstructorList.size()<1 || tmp==0){
+                        llamarHorarios(txtNombre,"No disponible");
+                    }
                 }
             });
 
             adapterHorarios.setOnItemCLickListener3(new AdapterHorarios.OnItemCLickListener() {
                 @Override
                 public void itemClick(String txtNombre, int position) {
-                    llamarHorarios(txtNombre);
+                    int tmp =0;
+                    for (int i=0;i<MenuPrincipal.abreInstructorList.size();i++){
+                        String split[] = MenuPrincipal.abreInstructorList.get(i).getNombre().split(" ");
+                        String nombre = split[0]+" "+split[1].substring(0,1);
+                        if (nombre.equals(txtNombre)){
+                            llamarHorarios(txtNombre,MenuPrincipal.abreInstructorList.get(i).getAbreviacion());
+                            tmp=1;
+
+                        }
+
+                    }
+
+                    if (MenuPrincipal.abreInstructorList.size()<1 || tmp==0){
+                        llamarHorarios(txtNombre,"No disponible");
+                    }
                 }
             });
 
@@ -148,7 +191,21 @@ public class HorarioManana extends AppCompatActivity {
             adapterHorarios.setOnItemCLickListener4(new AdapterHorarios.OnItemCLickListener() {
                 @Override
                 public void itemClick(String txtNombre, int position) {
-                    llamarHorarios(txtNombre);
+                    int tmp =0;
+                    for (int i=0;i<MenuPrincipal.abreInstructorList.size();i++){
+                        String split[] = MenuPrincipal.abreInstructorList.get(i).getNombre().split(" ");
+                        String nombre = split[0]+" "+split[1].substring(0,1);
+                        if (nombre.equals(txtNombre)){
+                            llamarHorarios(txtNombre,MenuPrincipal.abreInstructorList.get(i).getAbreviacion());
+                            tmp=1;
+
+                        }
+
+                    }
+
+                    if (MenuPrincipal.abreInstructorList.size()<1 || tmp==0){
+                        llamarHorarios(txtNombre,"No disponible");
+                    }
                 }
             });
 
@@ -156,7 +213,21 @@ public class HorarioManana extends AppCompatActivity {
             adapterHorarios.setOnItemCLickListener5(new AdapterHorarios.OnItemCLickListener() {
                 @Override
                 public void itemClick(String txtNombre, int position) {
-                    llamarHorarios(txtNombre);
+                    int tmp =0;
+                    for (int i=0;i<MenuPrincipal.abreInstructorList.size();i++){
+                        String split[] = MenuPrincipal.abreInstructorList.get(i).getNombre().split(" ");
+                        String nombre = split[0]+" "+split[1].substring(0,1);
+                        if (nombre.equals(txtNombre)){
+                            llamarHorarios(txtNombre,MenuPrincipal.abreInstructorList.get(i).getAbreviacion());
+                            tmp=1;
+
+                        }
+
+                    }
+
+                    if (MenuPrincipal.abreInstructorList.size()<1 || tmp==0){
+                        llamarHorarios(txtNombre,"No disponible");
+                    }
                 }
             });
 
@@ -181,12 +252,12 @@ public class HorarioManana extends AppCompatActivity {
         }
     }
 
-    private void llamarHorarios(String txtNombre) {
+    private void llamarHorarios(String txtNombre,String abreviacion) {
         Dialog dialog = new Dialog(HorarioManana.this);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //before
         dialog.setContentView(R.layout.item_instructor);
-        consultarInstructor(txtNombre);
+        consultarInstructor(txtNombre,abreviacion);
         AdapterInstructorFicha adapterInstructorFicha = new AdapterInstructorFicha(horarioOrganizado);
         RecyclerView recyclerView = dialog.findViewById(R.id.recyclerView);
         recyclerView.setAdapter(adapterInstructorFicha);
@@ -204,7 +275,7 @@ public class HorarioManana extends AppCompatActivity {
 
     }
 
-    private void consultarInstructor(String txtNombre) {
+    private void consultarInstructor(String txtNombre,String abreviacion) {
         instructorHorarios = new ArrayList<>();
         List<InstructorHorario> hoInstructorNo = MenuPrincipal.hoInstructorNo;
         for (int i=0; i<hoInstructorNo.size();i++){
@@ -212,15 +283,22 @@ public class HorarioManana extends AppCompatActivity {
                 instructorHorarios.add(hoInstructorNo.get(i));
             }
 
+            try {
+                String [] strings = hoInstructorNo.get(i).getNombre().split("/");
+                if (strings[0].equals("F") || strings[1].equals("F")){
+                    Log.e("Horario:" + i, "Flor Hernandez"+ " " + hoInstructorNo.get(i).getFicha() + " " + hoInstructorNo.get(i).getDia() + " " + hoInstructorNo.get(i).getHora()+" "+hoInstructorNo.get(i).getAmbiente());
+                }
+
+            }catch (Exception ignored){
+
+            }
+
         }
 
-        horarioOrganizado= new String[40];
+        horarioOrganizado= new String[35];
 
-        for (int i=0;i<Constants.dia.length-1;i++){
-            horarioOrganizado[i]=Constants.dia[i];
-        }
         for (int tmp=0;tmp<instructorHorarios.size();tmp++) {
-            int contador =5;
+            int contador =0;
             for (int i = 0; i < 7; i++) {
                 for (int j = 0; j < 5; j++) {
                     if (Constants.dia[j].equals(instructorHorarios.get(tmp).getDia()) && Constants.hora[i].equals(instructorHorarios.get(tmp).getHora())){

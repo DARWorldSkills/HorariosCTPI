@@ -24,6 +24,7 @@ import com.aprendiz.ragp.horariosctpi.controllers.InformacionManana;
 import com.aprendiz.ragp.horariosctpi.controllers.InformacionNoche;
 import com.aprendiz.ragp.horariosctpi.controllers.InformacionTarde;
 import com.aprendiz.ragp.horariosctpi.controllers.IniciarSesion;
+import com.aprendiz.ragp.horariosctpi.models.AbreviacionInstructor;
 import com.aprendiz.ragp.horariosctpi.models.Ambiente;
 import com.aprendiz.ragp.horariosctpi.models.AmbienteHorario;
 import com.aprendiz.ragp.horariosctpi.models.AmbienteHorarioFicha;
@@ -92,6 +93,7 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
     //public static List<HorarioInstructor> hoInstructorNo = new ArrayList<>();
 
     public static List<InstructorHorario> hoInstructorNo = new ArrayList<>();
+    public static List<AbreviacionInstructor> abreInstructorList = new ArrayList<>();
 
 
     @Override
@@ -467,8 +469,32 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
             }
         }
 
+        ingresarAbreviacion();
 
         enConsolaLaPerdicion();
+    }
+
+
+    private void ingresarAbreviacion(){
+        String[] tmp =horarioList.get(0).getAbreviaciones().split(";");
+        abreInstructorList = new ArrayList<>();
+        String split [];
+        for (int i=0; i<tmp.length;i++){
+            split= tmp[i].split("=");
+            if (split.length>1){
+                abreInstructorList.add(new AbreviacionInstructor(split[0],split[1]));
+            }
+
+        }
+
+        for (int i=0;i<hoInstructorNo.size();i++){
+            for (int j=0;j<abreInstructorList.size();j++){
+                if (abreInstructorList.get(j).equals(hoInstructorNo.get(i).getNombre())){
+                    hoInstructorNo.get(i).setAbreviacion(abreInstructorList.get(j).getAbreviacion());
+                }
+            }
+        }
+
     }
 
     private void enConsolaLaPerdicion() {
@@ -476,15 +502,15 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
        Log.e("lista", String.valueOf(listaTodosLosHorarios.size()));
         for (int i=0;i<hoInstructorNo.size();i++){
             String [] strings = hoInstructorNo.get(i).getNombre().split("/");
-            if (hoInstructorNo.get(i).getNombre().equals("Catalina G") ) {
+            if (hoInstructorNo.get(i).getNombre().equals("Flor Hernandez") ) {
                 Log.e("Horario:" + i, hoInstructorNo.get(i).getNombre() + " " + hoInstructorNo.get(i).getFicha() + " " + hoInstructorNo.get(i).getDia() + " " + hoInstructorNo.get(i).getHora()+" "+hoInstructorNo.get(i).getAmbiente());
             }
 
 
 
             try {
-                if (strings[0].equals("C") || strings[1].equals("C")){
-                    Log.e("Horario:" + i, "Catalina G"+ " " + hoInstructorNo.get(i).getFicha() + " " + hoInstructorNo.get(i).getDia() + " " + hoInstructorNo.get(i).getHora()+" "+hoInstructorNo.get(i).getAmbiente());
+                if (strings[0].equals("F") || strings[1].equals("F")){
+                    Log.e("Horario:" + i, "Flor Hernandez"+ " " + hoInstructorNo.get(i).getFicha() + " " + hoInstructorNo.get(i).getDia() + " " + hoInstructorNo.get(i).getHora()+" "+hoInstructorNo.get(i).getAmbiente());
                 }
 
             }catch (Exception ignored){
