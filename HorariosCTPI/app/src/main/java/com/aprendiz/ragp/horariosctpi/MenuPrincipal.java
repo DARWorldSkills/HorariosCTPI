@@ -230,11 +230,9 @@ public class MenuPrincipal extends AppCompatActivity implements OnClickListener 
                 GenericTypeIndicator<ArrayList<Horario>> t = new GenericTypeIndicator<ArrayList<Horario>>(){};
                 horarioList = dataSnapshot.getValue(t);
                 ficha[0] = horarioList.get(0).getFicha();
-                ficha[1] = horarioList.get(3).getFicha();
-                ficha[2] = horarioList.get(6).getFicha();
+                ficha[1] = horarioList.get(11).getFicha();
+                ficha[2] = horarioList.get(12).getFicha();
                 obtenerFicha();
-
-
 
             }
 
