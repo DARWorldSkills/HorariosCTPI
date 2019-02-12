@@ -121,7 +121,7 @@ public class HorarioManana extends AppCompatActivity {
         txtFicha.setText(ficha);
 
         try {
-            horarioList = MenuPrincipal.horarioList.subList(0,3);
+            horarioList = MenuPrincipal.horarioList.subList(0,6);
 
             AdapterHorarios adapterHorarios = new AdapterHorarios(horarioList,this,getResources().getColor(R.color.verde));
             adapterHorarios.setOnItemCLickListener1(new AdapterHorarios.OnItemCLickListener() {
@@ -301,7 +301,7 @@ public class HorarioManana extends AppCompatActivity {
             int contador =0;
             for (int i = 0; i < 7; i++) {
                 for (int j = 0; j < 5; j++) {
-                    if (Constants.dia[j].equals(instructorHorarios.get(tmp).getDia()) && Constants.hora[i].equals(instructorHorarios.get(tmp).getHora())){
+                    if (Constants.dia[j].equals(instructorHorarios.get(tmp).getDia()) && Constants.hora[i].substring(0,3).equals(instructorHorarios.get(tmp).getHora().substring(0,3))){
                         horarioOrganizado[contador]=instructorHorarios.get(tmp).getFicha()+"\n"+instructorHorarios.get(tmp).getAmbiente();
                     }
                     contador++;

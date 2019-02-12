@@ -118,7 +118,7 @@ public class HorarioNoche extends AppCompatActivity {
         txtPrograma.setText(nombrePrograma);
         txtFicha.setText(ficha);
         try {
-            horarioList = MenuPrincipal.horarioList.subList(6,7);
+            horarioList = MenuPrincipal.horarioList.subList(12,13);
 
             AdapterHorarios adapterHorarios = new AdapterHorarios(horarioList,this,getResources().getColor(R.color.azul));
             adapterHorarios.setOnItemCLickListener1(new AdapterHorarios.OnItemCLickListener() {
