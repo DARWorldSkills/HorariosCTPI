@@ -1,30 +1,27 @@
 {
   "project_info": {
-    "project_number": "726006877294",
-    "firebase_url": "https://fresh-oath-214320.firebaseio.com",
-    "project_id": "fresh-oath-214320",
-    "storage_bucket": "fresh-oath-214320.appspot.com"
+    "project_number": "197304696283",
+    "firebase_url": "https://horariosctpi.firebaseio.com",
+    "project_id": "horariosctpi",
+    "storage_bucket": "horariosctpi.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:726006877294:android:edcc0b5c1b6b48f8",
+        "mobilesdk_app_id": "1:197304696283:android:edcc0b5c1b6b48f8",
         "android_client_info": {
           "package_name": "com.aprendiz.ragp.horariosctpi"
         }
       },
       "oauth_client": [
         {
-          "client_id": "726006877294-pls8f4u0c70j1kunv14dgar3q11aq672.apps.googleusercontent.com",
+          "client_id": "197304696283-r3f005nju7l4fg0f15h15pp3njupmt7p.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCA2hitfJ-sPRKxYqEzdnTDVtAHLdIjYrk"
-        },
-        {
-          "current_key": "AIzaSyCA2hitfJ-sPRKxYqEzdnTDVtAHLdIjYrk"
+          "current_key": "AIzaSyA5nWizFsUrHzgA27AFFb-WFsyXpUUd0YA"
         }
       ],
       "services": {
